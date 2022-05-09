@@ -103,7 +103,7 @@ public class Funiture : MonoBehaviour
     /// <summary>
     /// Changes Sizes of Object
     /// </summary>
-    private void SetSize()
+    private void SetSize(int size)
     {
         this.transform.localScale = new Vector3(size, size, size);
     }
