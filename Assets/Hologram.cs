@@ -8,22 +8,58 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class Hologram : MonoBehaviour
 {
-    private Transform visual;
-    [SerializeField]private GameObject objectToProject;
-    private GameObject hologramCopy;
+    [SerializeField] private Transform visual;
+    [SerializeField] public Transform objectToProject;
+    private Transform hologramCopy;
     [SerializeField] private Material ghostMaterial;
-    [SerializeField] private GridBuildingSystem gridSystem;
+    //[SerializeField] private GridBuildingSystem gridSystem;
+
+    [SerializeField] private Transform hologramReferenzPosition;
+    [SerializeField] private Transform hologramPivotPosition;
     
+    [SerializeField] private Transform xr;
+    
+    public PrimaryButtonWatcher watcher;
+
     int interval = 1; 
     float nextTime = 0;
 
     private void Start()
     {
-        objectToProject = this.gameObject;
-        SettingColorToHologram();
+        watcher.primaryButtonPress.AddListener(CreateObject);
+        //objectToProject = this.gameObject;
+        //SettingColorToHologram();
+        hologramCopy = CreatePreview(visual);
 
     }
 
+    private void Update()
+    {
+        hologramMover();
+    }
+
+
+    public Transform CreatePreview (Transform aPrefab)
+    {
+        Transform obj = (Transform)Instantiate(aPrefab);
+        foreach (var renderer in obj.GetComponentsInChildren<Renderer>(true))
+            renderer.sharedMaterial = ghostMaterial;
+        return obj;
+    }
+
+    public void hologramMover()
+    {
+        if (hologramCopy != null)
+        {
+            hologramCopy.position = hologramReferenzPosition.position;
+            hologramCopy.transform.eulerAngles = new Vector3(hologramReferenzPosition.transform.eulerAngles.x, xr.transform.eulerAngles.y + 90, hologramReferenzPosition.transform.eulerAngles.z);
+            //Vector3 newRotation = new Vector3(hologramReferenzPosition.transform.eulerAngles.x, mainCam.transform.eulerAngles.y, hologramReferenzPosition.transform.eulerAngles.z);
+            //hologramPivotPosition.transform.eulerAngles = newRotation;
+            //hologramCopy.transform.eulerAngles = newRotation;
+            
+        }
+    }
+    
     // private void Instance_OnSelectedChanged(object sender, System.EventArgs e)
     // {
     //     RefreshVisual();
@@ -31,7 +67,7 @@ public class Hologram : MonoBehaviour
 
     private void SetObjectToProject(GameObject gameObject)
     {
-        objectToProject = gameObject;
+        objectToProject = gameObject.transform;
         SettingColorToHologram();
     }
 
@@ -62,7 +98,7 @@ public class Hologram : MonoBehaviour
 
     private void SettingColorToHologram()
     {
-        hologramCopy = objectToProject;
+        //hologramCopy = objectToProject;
         //RepeatUntilNoChildrenfound(hologramCopy.transform);
         //RefreshVisual();
     }
@@ -134,5 +170,12 @@ public class Hologram : MonoBehaviour
     //     SetObjectToProject(grabbed);
     // }
 
-   
+    private void CreateObject(bool pressed)
+    {
+
+        if (pressed)
+        {
+            Instantiate(visual, hologramCopy.position, hologramCopy.rotation);
+        }
+    }
 }

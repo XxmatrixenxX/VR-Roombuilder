@@ -1,22 +1,59 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Funiture : MonoBehaviour
 {
 
     private float turnAngles = 30f;
 
+    [SerializeField]
     [Range(0f, 360f)]
     private float directionRange;
+    [SerializeField] private Text rotationText;
 
     private float sizeSteps = 0.1f;
     
+    [SerializeField]
     [Range(0f, 10f)]
     private float size;
 
+    [SerializeField] private Text sizeText;
+    
+
     private Vector3 location;
 
+    [SerializeField] private GameObject uiObject;
+
+    [SerializeField] private GameObject funiture;
+
+    [SerializeField] private Slider sizeSlider;
+    [SerializeField] private Slider rotationSlider;
+
+    private void Start()
+    {
+        SliderStartPosition();
+       // Accepted();
+    }
+
+    private void Awake()
+    {
+        SliderStartPosition();
+        //Accepted();
+    }
+
+    private void UiActive()
+    {
+        uiObject.SetActive(true);
+    }
+
+    public void Accepted()
+    {
+        uiObject.SetActive(false);
+    }
 
     /// <summary>
     /// Turns the Object in a Direction
@@ -60,7 +97,10 @@ public class Funiture : MonoBehaviour
     /// </summary>
     private void SetTransformRotation()
     {
-        this.transform.rotation = Quaternion.Euler(0, directionRange, 0);
+        if(funiture.transform.GetChild(0) != null)
+        {
+            funiture.transform.GetChild(0).transform.rotation = Quaternion.Euler(0, directionRange, 0);
+        }
     }
     
     /// <summary>
@@ -103,12 +143,49 @@ public class Funiture : MonoBehaviour
     /// <summary>
     /// Changes Sizes of Object
     /// </summary>
-    private void SetSize(int size)
+    private void SetSize(float size)
     {
-        this.transform.localScale = new Vector3(size, size, size);
+        funiture.transform.localScale = new Vector3(size, size, size);
+    }
+
+    public void SliderStartPosition()
+    {
+        sizeSlider.value = size;
+        rotationSlider.value = directionRange;
+    }
+
+    public void SliderSize(Slider size)
+    {
+        this.size = size.value * sizeSteps;
+        SetSize(this.size);
+        ChangeSizeText();
     }
     
-    
+    public void SliderRotation(Slider rotation)
+    {
+        this.directionRange = rotation.value * turnAngles;
+        SetTransformRotation();
+        ChangeRotationText();
+    }
+
+    public void ChangeSizeText()
+    {
+        sizeText.text = size.ToString(CultureInfo.InvariantCulture);
+    }
+
+    public void ChangeRotationText()
+    {
+        rotationText.text = directionRange.ToString(CultureInfo.InvariantCulture);
+    }
+
+    private void FillValuesOfObjectAtStart()
+    {
+        
+    }
+
+
+
+
 
 
 }
