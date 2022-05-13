@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -33,6 +34,8 @@ public class Funiture : MonoBehaviour
     [SerializeField] private Slider sizeSlider;
     [SerializeField] private Slider rotationSlider;
 
+    [SerializeField] private Collider funitureCollider;
+
     private void Start()
     {
         SliderStartPosition();
@@ -43,6 +46,11 @@ public class Funiture : MonoBehaviour
     {
         SliderStartPosition();
         //Accepted();
+    }
+
+    public void DestroyThisFuniture()
+    {
+        Destroy(this.gameObject);
     }
 
     private void UiActive()
@@ -177,15 +185,5 @@ public class Funiture : MonoBehaviour
     {
         rotationText.text = directionRange.ToString(CultureInfo.InvariantCulture);
     }
-
-    private void FillValuesOfObjectAtStart()
-    {
-        
-    }
-
-
-
-
-
-
+    
 }
