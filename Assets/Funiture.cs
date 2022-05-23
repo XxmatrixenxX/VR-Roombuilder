@@ -34,7 +34,7 @@ public class Funiture : MonoBehaviour
     [SerializeField] private Slider sizeSlider;
     [SerializeField] private Slider rotationSlider;
 
-    [SerializeField] private Collider funitureCollider;
+    public Collider funitureCollider;
 
     private void Start()
     {

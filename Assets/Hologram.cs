@@ -23,9 +23,7 @@ public class Hologram : MonoBehaviour
     [SerializeField] private Transform xr;
     
     public PrimaryButtonWatcher watcher;
-
-    int interval = 1; 
-    float nextTime = 0;
+    
 
     private void Start()
     {

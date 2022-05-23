@@ -14,7 +14,7 @@ public class HologramSpawnPoint : MonoBehaviour
 
     public bool insideFuniture = false;
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.tag == "Funiture")
         {
@@ -27,8 +27,8 @@ public class HologramSpawnPoint : MonoBehaviour
             }
         }
     }
-    
-    private void OnCollisionExit(Collision collision)
+
+    private void OnTriggerExit(Collider collision)
     {
         if (collision.gameObject.tag == "Funiture")
         {
@@ -41,4 +41,5 @@ public class HologramSpawnPoint : MonoBehaviour
             }
         }
     }
+    
 }
