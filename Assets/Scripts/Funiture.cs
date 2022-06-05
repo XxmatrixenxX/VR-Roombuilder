@@ -5,6 +5,7 @@ using System.Globalization;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using Object = System.Object;
 
 public class Funiture : MonoBehaviour
 {
@@ -34,18 +35,23 @@ public class Funiture : MonoBehaviour
     [SerializeField] private Slider sizeSlider;
     [SerializeField] private Slider rotationSlider;
 
+    [SerializeField] private BuildingCharakter buildingCharakter;
+    
+    
+
     public Collider funitureCollider;
 
     private void Start()
     {
         SliderStartPosition();
-       // Accepted();
+        Accepted();
     }
 
     private void Awake()
     {
         SliderStartPosition();
-        //Accepted();
+        Accepted();
+        buildingCharakter = FindObjectOfType<BuildingCharakter>();
     }
 
     public void DestroyThisFuniture()
@@ -184,6 +190,12 @@ public class Funiture : MonoBehaviour
     public void ChangeRotationText()
     {
         rotationText.text = directionRange.ToString(CultureInfo.InvariantCulture);
+    }
+
+    public void SelectedChairForSettings()
+    {
+       if(buildingCharakter.activeMode == SC_For_Mode.Mode.buildingMode)
+         UiActive();
     }
     
 }

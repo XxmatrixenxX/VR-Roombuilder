@@ -258,6 +258,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5590129410561647509}
+  - component: {fileID: 7472368804796699757}
   m_Layer: 0
   m_Name: ChoosingFunitureType
   m_TagString: Untagged
@@ -280,6 +281,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7472368804796699757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4075127280435945483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b05a90860ae443588d2ad4627e07f569, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  typeList: {fileID: 11400000, guid: 7d0f2bbc6c5199d4497a4b8fa73017da, type: 2}
+  menuItem: {fileID: 3009083999477039547, guid: 704326f5d7d5b5d42b6c4dbc6d28d390,
+    type: 3}
+  typeItem: {fileID: 4520022021399513018, guid: 428e289fb12be034dbfbe26db8cf11e1,
+    type: 3}
+  canvasCollectionOfType: {fileID: 7450464020025207966}
+  canvasObjectsOfChoosedType: {fileID: 7393299280702852598}
+  buildingCharakter: {fileID: 0}
+  hologram: {fileID: 0}
 --- !u!1 &7450464020025207966
 GameObject:
   m_ObjectHideFlags: 0
@@ -1597,6 +1619,12 @@ PrefabInstance:
 --- !u!4 &6055993532428587537 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8119873570802126145, guid: e1f53957dddb99849bcd6a918a32237a,
+    type: 3}
+  m_PrefabInstance: {fileID: 2640415558482681680}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7393299280702852598 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4773504940343005862, guid: e1f53957dddb99849bcd6a918a32237a,
     type: 3}
   m_PrefabInstance: {fileID: 2640415558482681680}
   m_PrefabAsset: {fileID: 0}

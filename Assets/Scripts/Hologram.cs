@@ -9,7 +9,6 @@ using UnityEngine.XR.Interaction.Toolkit;
 public class Hologram : MonoBehaviour
 {
     [SerializeField] private Transform visual;
-    [SerializeField] public Transform objectToProject;
     private Transform hologramCopy;
     [SerializeField] private Material ghostMaterial;
     [SerializeField] private Material blockedMaterial;
@@ -21,6 +20,8 @@ public class Hologram : MonoBehaviour
     [SerializeField] private Transform hologramPivotPosition;
     
     [SerializeField] private Transform xr;
+
+    [SerializeField] private bool blocked;
     
     public PrimaryButtonWatcher watcher;
     
@@ -69,20 +70,24 @@ public class Hologram : MonoBehaviour
         }
     }
     
-
-    private void SetObjectToProject(GameObject gameObject)
-    {
-        objectToProject = gameObject.transform;
-    }
-
-
     private void CreateObject(bool pressed)
     {
 
         if (pressed)
         {
+            if(!blocked)
             Instantiate(visual, hologramCopy.position, hologramCopy.rotation);
         }
+    }
+
+    public void ChangeHologram(Transform newObjectTransform)
+    {
+        visual = newObjectTransform;
+        if (hologramCopy != null)
+        {
+            Destroy(hologramCopy);
+        }
+        hologramCopy = CreatePreview(visual);
     }
 
     private void placementBlocked()
@@ -90,6 +95,8 @@ public class Hologram : MonoBehaviour
         Debug.Log("Blocked Color for Copy");
         foreach (var renderer in hologramCopy.GetComponentsInChildren<Renderer>(true))
             renderer.sharedMaterial = blockedMaterial;
+        
+        blocked = true;
     }
     
     private void placementOpen()
@@ -97,6 +104,8 @@ public class Hologram : MonoBehaviour
         Debug.Log("Ghost Color for Copy");
         foreach (var renderer in hologramCopy.GetComponentsInChildren<Renderer>(true))
             renderer.sharedMaterial = ghostMaterial;
+
+        blocked = false;
     }
 
     
