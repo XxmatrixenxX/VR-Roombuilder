@@ -24,7 +24,12 @@ public class Hologram : MonoBehaviour
     [SerializeField] private bool blocked;
     
     public PrimaryButtonWatcher watcher;
-    
+    [SerializeField] private BuildingCharakter buildingCharakter;
+
+    private void Awake()
+    {
+        buildingCharakter = FindObjectOfType<BuildingCharakter>();
+    }
 
     private void Start()
     {
@@ -35,7 +40,8 @@ public class Hologram : MonoBehaviour
 
         _hologramSpawnPoint.HologramEnteredFuniture += placementBlocked;
         _hologramSpawnPoint.HologramExitFuniture += placementOpen;
-        
+
+        buildingCharakter.ModeChanged += disableHologram;
     }
 
     private void Update()
@@ -106,6 +112,18 @@ public class Hologram : MonoBehaviour
             renderer.sharedMaterial = ghostMaterial;
 
         blocked = false;
+    }
+
+    private void disableHologram()
+    {
+        if (buildingCharakter.activeMode != SC_For_Mode.Mode.buildingMode || buildingCharakter.activeMode != SC_For_Mode.Mode.chooseBuildingMode)
+        {
+            hologramCopy.gameObject.SetActive(false);
+        }
+        else
+        {
+            hologramCopy.gameObject.SetActive(true);
+        }
     }
 
     

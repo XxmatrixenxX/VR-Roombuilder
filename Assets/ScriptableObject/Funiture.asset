@@ -14,4 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   menuItemList:
   - {fileID: 11400000, guid: 7c3b011ad0ab622499f2703b4ee0a212, type: 2}
+  - {fileID: 11400000, guid: 9fd7409b355bfda4bb5629c0a7f2ff17, type: 2}
+  - {fileID: 11400000, guid: b24e0b5d97c6f274dbeac2ddf5ae28d4, type: 2}
   ListTypeName: Funiture

@@ -6,12 +6,15 @@ using UnityEngine;
 
 public class BuildingCharakter : MonoBehaviour
 {
-
+   public event Action ModeChanged;
+   
    public WristMenuHandler wristMenu;
 
    public SC_For_Mode.Mode activeMode = SC_For_Mode.Mode.playerMode;
 
 
+   public void InvokeModeChanged() => ModeChanged?.Invoke();
+   
    public void ChangeMode(SC_For_Mode.Mode mode)
    {
       switch (mode)
@@ -29,6 +32,7 @@ public class BuildingCharakter : MonoBehaviour
             ChangeToTopMode();
             break;
       }
+      InvokeModeChanged();
    }
    
    public void ChangeToBuildingMode()

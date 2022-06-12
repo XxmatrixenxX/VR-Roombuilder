@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,9 +10,6 @@ using Object = System.Object;
 
 public class Funiture : MonoBehaviour
 {
-
-    private float turnAngles = 30f;
-
     [SerializeField]
     [Range(0f, 360f)]
     private float directionRange;
@@ -20,7 +18,7 @@ public class Funiture : MonoBehaviour
     private float sizeSteps = 0.1f;
     
     [SerializeField]
-    [Range(0f, 10f)]
+    [Range(0.1f, 2f)]
     private float size;
 
     [SerializeField] private Text sizeText;
@@ -31,6 +29,10 @@ public class Funiture : MonoBehaviour
     [SerializeField] private GameObject uiObject;
 
     [SerializeField] private GameObject funiture;
+
+    [SerializeField] private GameObject objectHolder;
+
+    [SerializeField] private List<Material> designs;
 
     [SerializeField] private Slider sizeSlider;
     [SerializeField] private Slider rotationSlider;
@@ -69,22 +71,6 @@ public class Funiture : MonoBehaviour
         uiObject.SetActive(false);
     }
 
-    /// <summary>
-    /// Turns the Object in a Direction
-    /// </summary>
-    /// <param name="left">If true it will turn to the left, false to right.</param>
-    private void TurnFuniture(bool left)
-    {
-        if (left)
-        {
-           directionRange = CalculateDirection(directionRange, turnAngles);
-        }
-        else 
-        {
-            directionRange = CalculateDirection(directionRange, -turnAngles);
-        }
-    }
-    
     /// <summary>
     /// Calculate the Float for the Range
     /// </summary>
@@ -142,16 +128,16 @@ public class Funiture : MonoBehaviour
     {
         float result = size + sizeDifference;
 
-        if (result > 10f)
+        if (result > 2f)
         {
-            return result - 10f;
+            return result - 2f;
         }
 
-        if (result == 0f)
+        if (result == 0.1f)
         {
-            return 10f;
+            return 0.1f;
         }
-        return 10f + result;
+        return 2f + result;
     }
 
     /// <summary>
@@ -177,7 +163,7 @@ public class Funiture : MonoBehaviour
     
     public void SliderRotation(Slider rotation)
     {
-        this.directionRange = rotation.value * turnAngles;
+        this.directionRange = rotation.value -180;
         SetTransformRotation();
         ChangeRotationText();
     }
@@ -196,6 +182,19 @@ public class Funiture : MonoBehaviour
     {
        if(buildingCharakter.activeMode == SC_For_Mode.Mode.buildingMode)
          UiActive();
+    }
+
+    public void SwapDesign(int number)
+    {
+        if (designs.Count > number)
+        {
+            if (objectHolder.transform.childCount > 0)
+            {
+                Renderer render = objectHolder.transform.GetChild(0).GetComponent<Renderer>();
+
+                render.sharedMaterial = designs[number];
+            }
+        }
     }
     
 }

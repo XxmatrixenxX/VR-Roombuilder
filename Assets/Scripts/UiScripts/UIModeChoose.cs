@@ -20,9 +20,19 @@ public class UIModeChoose : MonoBehaviour
         buildingCharakter = FindObjectOfType<BuildingCharakter>();
         AddModeToCollection();
     }
+    
+    public void LoadingCanvas()
+    {
+        AddModeToCollection();
+    }
 
     public void AddModeToCollection()
     {
+        foreach (Transform exampleDelete in canvasCollectionOfModes.transform)
+        {
+            Destroy(exampleDelete.gameObject);
+        }
+        
         foreach (var sc_mode in modeList.modeList)
         {
             UIModeHolder mode = Instantiate(modeUI, new Vector3(0, 0, 0), Quaternion.identity);

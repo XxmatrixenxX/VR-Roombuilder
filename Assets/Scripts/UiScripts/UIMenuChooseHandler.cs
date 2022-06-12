@@ -37,7 +37,7 @@ public class UIMenuChooseHandler : MonoBehaviour
         
         foreach (Transform exampleDelete in canvasCollectionOfType.transform)
         {
-            GameObject.Destroy(exampleDelete);
+            GameObject.Destroy(exampleDelete.gameObject);
         }
         
         foreach (var sc_menu in typeList.menuList)
@@ -60,7 +60,7 @@ public class UIMenuChooseHandler : MonoBehaviour
     {
         foreach (Transform exampleDelete in canvasObjectsOfChoosedType.transform)
         {
-            GameObject.Destroy(exampleDelete);
+            Destroy(exampleDelete.gameObject);
         }
         
         foreach (var sc_typeItem in itemList)
@@ -70,13 +70,15 @@ public class UIMenuChooseHandler : MonoBehaviour
             mode.transform.SetParent(canvasObjectsOfChoosedType.transform, false);
 
             mode.description.text = sc_typeItem.description;
-            mode.title.text = sc_typeItem.itemName;
+            if(!sc_typeItem.itemName.Equals(null))
+                mode.title.text = sc_typeItem.itemName;
             mode.button.onClick.AddListener(delegate { ClickedTypeItem(sc_typeItem.item); });
         }
     }
 
     public void ClickedTypeItem(GameObject item)
     {
+        buildingCharakter.ChangeMode(SC_For_Mode.Mode.buildingMode);
         hologram.ChangeHologram(item.transform);
     }
 }

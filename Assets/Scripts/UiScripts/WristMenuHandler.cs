@@ -6,8 +6,8 @@ using UnityEngine.InputSystem;
 
 public class WristMenuHandler : MonoBehaviour
 {
-    [SerializeField] private GameObject ItemSelectCanvas;
-    [SerializeField] private GameObject ModeSelectCanvas;
+    [SerializeField] private UIMenuChooseHandler ItemSelectCanvas;
+    [SerializeField] private UIModeChoose ModeSelectCanvas;
 
     private void Awake()
     {
@@ -16,20 +16,21 @@ public class WristMenuHandler : MonoBehaviour
 
     public void ActivateModeSelect()
     {
-        ItemSelectCanvas.SetActive(false);
-        ModeSelectCanvas.SetActive(true);
+        ItemSelectCanvas.gameObject.SetActive(false);
+        ModeSelectCanvas.gameObject.SetActive(true);
     }
 
     public void ActivateItemSelectCanvas()
     {
-        ItemSelectCanvas.SetActive(true);
-        ModeSelectCanvas.SetActive(false);
+        ItemSelectCanvas.gameObject.SetActive(true);
+        ItemSelectCanvas.LoadingCanvas();
+        ModeSelectCanvas.gameObject.SetActive(false);
     }
 
     public void CloseMenus()
     {
-        ItemSelectCanvas.SetActive(false);
-        ModeSelectCanvas.SetActive(false);
+        ItemSelectCanvas.gameObject.SetActive(false);
+        ModeSelectCanvas.gameObject.SetActive(false);
     }
 
     public void MenuPressed(InputAction.CallbackContext context)
