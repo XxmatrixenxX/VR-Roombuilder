@@ -8,4 +8,5 @@ public class UIModeHolder : MonoBehaviour
    public Button button;
    public Text title;
    public Text description;
+   public SC_For_Mode.Mode mode;
 }

@@ -8,8 +8,8 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class Hologram : MonoBehaviour
 {
-    [SerializeField] private Transform visual;
-    private Transform hologramCopy;
+    [SerializeField] private GameObject visual;
+    [SerializeField] private GameObject hologramCopy;
     [SerializeField] private Material ghostMaterial;
     [SerializeField] private Material blockedMaterial;
     //[SerializeField] private GridBuildingSystem gridSystem;
@@ -36,10 +36,11 @@ public class Hologram : MonoBehaviour
         watcher.primaryButtonPress.AddListener(CreateObject);
         //objectToProject = this.gameObject;
         //SettingColorToHologram();
-        hologramCopy = CreatePreview(visual);
+        Transform hologramDummy = CreatePreview(visual.transform);
+        hologramCopy = hologramDummy.gameObject;
+        hologramCopy.AddComponent(typeof(HologramSpawnPoint));
 
-        _hologramSpawnPoint.HologramEnteredFuniture += placementBlocked;
-        _hologramSpawnPoint.HologramExitFuniture += placementOpen;
+        addListeners(hologramCopy);
 
         buildingCharakter.ModeChanged += disableHologram;
     }
@@ -49,6 +50,15 @@ public class Hologram : MonoBehaviour
         hologramMover();
     }
 
+    private void addListeners(GameObject hologramSpawnPointObject)
+    {
+        if (hologramSpawnPointObject.GetComponent(typeof(HologramSpawnPoint)))
+        {
+            hologramSpawnPointObject.GetComponent<HologramSpawnPoint>().HologramEnteredFuniture += placementBlocked;
+            hologramSpawnPointObject.GetComponent<HologramSpawnPoint>().HologramExitFuniture += placementOpen;
+        }
+       
+    }
 
     public Transform CreatePreview (Transform aPrefab)
     {
@@ -67,12 +77,11 @@ public class Hologram : MonoBehaviour
     {
         if (hologramCopy != null)
         {
-            hologramCopy.position = hologramReferenzPosition.position;
+            hologramCopy.transform.position = hologramReferenzPosition.position;
             hologramCopy.transform.eulerAngles = new Vector3(hologramReferenzPosition.transform.eulerAngles.x, xr.transform.eulerAngles.y + 90, hologramReferenzPosition.transform.eulerAngles.z);
             //Vector3 newRotation = new Vector3(hologramReferenzPosition.transform.eulerAngles.x, mainCam.transform.eulerAngles.y, hologramReferenzPosition.transform.eulerAngles.z);
             //hologramPivotPosition.transform.eulerAngles = newRotation;
             //hologramCopy.transform.eulerAngles = newRotation;
-            
         }
     }
     
@@ -82,18 +91,23 @@ public class Hologram : MonoBehaviour
         if (pressed)
         {
             if(!blocked)
-            Instantiate(visual, hologramCopy.position, hologramCopy.rotation);
+            Instantiate(visual, hologramCopy.transform.position, hologramCopy.transform.rotation);
         }
     }
 
-    public void ChangeHologram(Transform newObjectTransform)
+    public void ChangeHologram(GameObject newObjectTransform)
     {
         visual = newObjectTransform;
         if (hologramCopy != null)
         {
             Destroy(hologramCopy);
+            hologramCopy = new GameObject();
         }
-        hologramCopy = CreatePreview(visual);
+
+        Transform hologramDummy = CreatePreview(visual.transform);
+        hologramCopy = hologramDummy.gameObject;
+        hologramCopy.AddComponent(typeof(HologramSpawnPoint));
+        addListeners(hologramCopy);
     }
 
     private void placementBlocked()

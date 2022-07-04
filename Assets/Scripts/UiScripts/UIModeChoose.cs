@@ -39,9 +39,10 @@ public class UIModeChoose : MonoBehaviour
 
             mode.transform.SetParent(canvasCollectionOfModes.transform, false);
 
+            mode.mode = sc_mode.mode;
             mode.description.text = sc_mode.description;
             mode.title.text = sc_mode.modeString;
-            mode.button.onClick.AddListener(delegate { ButtonEvent(sc_mode.mode); });
+            mode.button.onClick.AddListener(delegate { ButtonEvent(mode.mode); });
         }
     }
 

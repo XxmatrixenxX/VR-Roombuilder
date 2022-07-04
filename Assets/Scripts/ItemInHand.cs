@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ItemInHand : MonoBehaviour
 {
-    [SerializeField] private Transform itemSelected;
+    [SerializeField] private GameObject itemSelected;
 
     [SerializeField] private GameObject itemInHand;
 
@@ -16,7 +16,7 @@ public class ItemInHand : MonoBehaviour
     
     private void SetItemSelected(GameObject ItemToHand)
     {
-        itemSelected = ItemToHand.transform;
+        itemSelected = ItemToHand;
         InstantiateItemAtPosition();
     }
 
@@ -25,8 +25,9 @@ public class ItemInHand : MonoBehaviour
         if (itemInHand != null)
         {
             Destroy(itemInHand);
+            itemInHand = new GameObject();
         }
-        
+
         itemInHand = Instantiate(itemSelected, itemInHandPosition.transform.position, Quaternion.identity).gameObject;
         
         //Hologram Changed

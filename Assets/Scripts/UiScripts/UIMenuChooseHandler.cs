@@ -70,8 +70,8 @@ public class UIMenuChooseHandler : MonoBehaviour
             mode.transform.SetParent(canvasObjectsOfChoosedType.transform, false);
 
             mode.description.text = sc_typeItem.description;
-            if(!sc_typeItem.itemName.Equals(null))
-                mode.title.text = sc_typeItem.itemName;
+            // if(!sc_typeItem.itemName.Equals(null))
+            //     mode.title.text = sc_typeItem.itemName;
             mode.button.onClick.AddListener(delegate { ClickedTypeItem(sc_typeItem.item); });
         }
     }
@@ -79,6 +79,6 @@ public class UIMenuChooseHandler : MonoBehaviour
     public void ClickedTypeItem(GameObject item)
     {
         buildingCharakter.ChangeMode(SC_For_Mode.Mode.buildingMode);
-        hologram.ChangeHologram(item.transform);
+        hologram.ChangeHologram(item);
     }
 }

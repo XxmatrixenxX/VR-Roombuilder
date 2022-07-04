@@ -37,6 +37,11 @@ public class Funiture : MonoBehaviour
     [SerializeField] private Slider sizeSlider;
     [SerializeField] private Slider rotationSlider;
 
+    [SerializeField] private UITextureHolder texturePrefab;
+
+    [SerializeField] private GameObject uiScaleCanvas;
+    [SerializeField] private GameObject uiTextureCanvas;
+
     [SerializeField] private BuildingCharakter buildingCharakter;
     
     
@@ -47,6 +52,7 @@ public class Funiture : MonoBehaviour
     {
         SliderStartPosition();
         Accepted();
+        buildingCharakter.SelectedNewItem += SelectedNewItem;
     }
 
     private void Awake()
@@ -59,6 +65,19 @@ public class Funiture : MonoBehaviour
     public void DestroyThisFuniture()
     {
         Destroy(this.gameObject);
+    }
+
+    public void SelectedNewItem(GameObject selectedGameObject)
+    {
+        if (selectedGameObject.Equals(this.gameObject))
+        {
+            UiActive();
+            ChangeCanvasToScaling();
+        }
+        else
+        {
+            Accepted();
+        }
     }
 
     private void UiActive()
@@ -97,10 +116,8 @@ public class Funiture : MonoBehaviour
     /// </summary>
     private void SetTransformRotation()
     {
-        if(funiture.transform.GetChild(0) != null)
-        {
-            funiture.transform.GetChild(0).transform.rotation = Quaternion.Euler(0, directionRange, 0);
-        }
+        
+            funiture.transform.rotation = Quaternion.Euler(0, directionRange, 0);
     }
     
     /// <summary>
@@ -175,17 +192,35 @@ public class Funiture : MonoBehaviour
 
     public void ChangeRotationText()
     {
-        rotationText.text = directionRange.ToString(CultureInfo.InvariantCulture);
+        rotationText.text = (directionRange).ToString(CultureInfo.InvariantCulture);
     }
 
-    public void SelectedChairForSettings()
+    public void SelectedThisItemForSettings(GameObject gameObject)
     {
+        Debug.Log("SelectedThisItemForSettings: Playermode: " +buildingCharakter.activeMode);
        if(buildingCharakter.activeMode == SC_For_Mode.Mode.buildingMode)
-         UiActive();
+        buildingCharakter.InvokeSelectedNewItem(gameObject);
     }
+
+    public void ChangeCanvasToTexture()
+    {
+        Debug.Log("ChangeCanvasToTexture Canvas");
+        uiScaleCanvas.SetActive(false);
+        uiTextureCanvas.SetActive(true);
+        LoadingTextures();
+    }
+
+    public void ChangeCanvasToScaling()
+    {
+        Debug.Log("ChangeCanvasToScaling Canvas");
+        uiScaleCanvas.SetActive(true);
+        uiTextureCanvas.SetActive(false);
+    }
+    
 
     public void SwapDesign(int number)
     {
+        Debug.Log("SwapDesign: " + number);
         if (designs.Count > number)
         {
             if (objectHolder.transform.childCount > 0)
@@ -196,5 +231,32 @@ public class Funiture : MonoBehaviour
             }
         }
     }
+
+    public void LoadingTextures()
+    {
+        Debug.Log("Loading Textures");
+        foreach (Transform exampleDelete in uiTextureCanvas.transform.GetChild(0))
+        {
+            Destroy(exampleDelete.gameObject);
+        }
+
+        int counter = 0;
+        foreach (var material in designs)
+        {
+            UITextureHolder texture = Instantiate(texturePrefab, new Vector3(0, 0, 0), Quaternion.identity);
+
+            texture.transform.SetParent(uiTextureCanvas.transform.GetChild(0), false);
+
+            texture.title.text = material.name;
+
+            texture.number = counter;
+           
+            texture.button.onClick.AddListener(delegate { SwapDesign(texture.number); });
+            counter++;
+        }
+    }
+    
+    
+    
     
 }
