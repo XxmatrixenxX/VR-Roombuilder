@@ -25,11 +25,13 @@ public class VRRig : MonoBehaviour
     public Transform headConstraint;
 
     public Vector3 headBodyOffset;
+    public Transform offSet;
     
     // Start is called before the first frame update
     void Start()
-    {
-        headBodyOffset = transform.position - headConstraint.position;
+    { 
+       // headBodyOffset = transform.position - headConstraint.position;
+       headBodyOffset = offSet.position;
     }
 
     // Update is called once per frame

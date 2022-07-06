@@ -504,6 +504,7 @@ Transform:
   - {fileID: 190102605}
   - {fileID: 1091536316}
   - {fileID: 1893741686}
+  - {fileID: 851184044}
   m_Father: {fileID: 952535864}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -520,7 +521,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Weight: 1
-  m_Effectors: []
+  m_Effectors:
+  - m_Transform: {fileID: 1893741686}
+    m_Style:
+      shape: {fileID: 4300000, guid: c6793350c150f456688e39a81f97364a, type: 2}
+      color: {r: 1, g: 0, b: 0, a: 0.5}
+      size: 0.1
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0}
+    m_Visible: 1
 --- !u!1 &539403068
 GameObject:
   m_ObjectHideFlags: 0
@@ -1043,6 +1052,36 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 787837385}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &851184043
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 851184044}
+  m_Layer: 0
+  m_Name: Offset
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &851184044
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 851184043}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.64, z: 0.0447}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 486407353}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &902305762
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1526,10 +1565,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8654250720411597152, guid: 34115fd4eff069845a47d22ce756724e,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: d3ab459b799b0174a960137e7c4ac420, type: 2}
     - target: {fileID: 8654250720420943610, guid: 34115fd4eff069845a47d22ce756724e,
         type: 3}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8654250720420943610, guid: 34115fd4eff069845a47d22ce756724e,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8654250720420943610, guid: 34115fd4eff069845a47d22ce756724e,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8654250720420943610, guid: 34115fd4eff069845a47d22ce756724e,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8654250720420943610, guid: 34115fd4eff069845a47d22ce756724e,
         type: 3}
@@ -1756,12 +1815,23 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 952535801}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &952535830 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8654250720420943608, guid: 34115fd4eff069845a47d22ce756724e,
-    type: 3}
-  m_PrefabInstance: {fileID: 952535801}
+--- !u!114 &952535830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 952535802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c4f5befe7ac4a84eb1632561e52dd9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  footOffset: {x: 0, y: 0.06, z: 0}
+  rightFootPosWeight: 1
+  rightFootRotWeight: 1
+  leftFootPosWeight: 1
+  leftFootRotWeight: 1
 --- !u!4 &952535831 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 367304667414334944, guid: 34115fd4eff069845a47d22ce756724e,
@@ -1981,20 +2051,21 @@ MonoBehaviour:
   head:
     vrTarget: {fileID: 1312909230}
     rigTarget: {fileID: 1893741686}
-    trackingPositionOffset: {x: 0, y: 0, z: 0}
-    trackingRotationOffset: {x: 0, y: 0, z: 0}
+    trackingPositionOffset: {x: 0.05, y: -0.53, z: -0.06}
+    trackingRotationOffset: {x: 10, y: -90, z: -90}
   leftHand:
     vrTarget: {fileID: 1336805297}
     rigTarget: {fileID: 1739358672}
     trackingPositionOffset: {x: 0, y: 0, z: 0}
-    trackingRotationOffset: {x: 0, y: 0, z: 0}
+    trackingRotationOffset: {x: 177, y: -276, z: 20.6}
   rightHand:
     vrTarget: {fileID: 1672146911}
     rigTarget: {fileID: 1303483776}
     trackingPositionOffset: {x: 0, y: 0, z: 0}
-    trackingRotationOffset: {x: 0, y: 0, z: 0}
+    trackingRotationOffset: {x: -18, y: 130, z: -60}
   headConstraint: {fileID: 1893741686}
   headBodyOffset: {x: 0, y: 0, z: 0}
+  offSet: {fileID: 851184044}
 --- !u!114 &952535866
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2014,7 +2085,6 @@ MonoBehaviour:
   tripodSize: 1
   boneColor: {r: 1, g: 0, b: 0.010011673, a: 0.5}
   m_Transforms:
-  - {fileID: 952535830}
   - {fileID: 952535829}
   - {fileID: 952535828}
   - {fileID: 952535827}
@@ -2090,7 +2160,15 @@ MonoBehaviour:
   m_RigLayers:
   - m_Rig: {fileID: 486407354}
     m_Active: 1
-  m_Effectors: []
+  m_Effectors:
+  - m_Transform: {fileID: 952535864}
+    m_Style:
+      shape: {fileID: 4300000, guid: c6793350c150f456688e39a81f97364a, type: 2}
+      color: {r: 1, g: 0, b: 0, a: 0.5}
+      size: 0.1
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0}
+    m_Visible: 1
 --- !u!1 &958356744
 GameObject:
   m_ObjectHideFlags: 0
@@ -4017,7 +4095,7 @@ MonoBehaviour:
       m_Length: 1
       m_Item0:
         transform: {fileID: 1893741686}
-        weight: 1
+        weight: 0
       m_Item1:
         transform: {fileID: 0}
         weight: 0
@@ -4050,7 +4128,7 @@ MonoBehaviour:
     m_MaintainPositionOffset: 0
     m_MaintainRotationOffset: 0
   m_SourceObjectsGUIToggle: 1
-  m_SettingsGUIToggle: 0
+  m_SettingsGUIToggle: 1
 --- !u!1 &1909677334
 GameObject:
   m_ObjectHideFlags: 0
