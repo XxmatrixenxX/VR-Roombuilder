@@ -19,7 +19,7 @@ public class Funiture : MonoBehaviour
     
     [SerializeField]
     [Range(0.1f, 2f)]
-    private float size;
+    private float size = 1;
 
     [SerializeField] private Text sizeText;
     
@@ -51,15 +51,13 @@ public class Funiture : MonoBehaviour
     private void Start()
     {
         SliderStartPosition();
-        Accepted();
         buildingCharakter.SelectedNewItem += SelectedNewItem;
     }
 
     private void Awake()
     {
-        SliderStartPosition();
-        Accepted();
         buildingCharakter = FindObjectOfType<BuildingCharakter>();
+        Accepted();
     }
 
     public void DestroyThisFuniture()
@@ -167,8 +165,11 @@ public class Funiture : MonoBehaviour
 
     public void SliderStartPosition()
     {
-        sizeSlider.value = size;
+        Debug.Log("Funiture: SliderPosition Size: "+ size);
+        sizeSlider.value = size * 10;
         rotationSlider.value = directionRange;
+        SliderSize(sizeSlider);
+        SliderRotation(rotationSlider);
     }
 
     public void SliderSize(Slider size)

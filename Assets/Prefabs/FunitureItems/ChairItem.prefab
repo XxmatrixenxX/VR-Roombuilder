@@ -176,7 +176,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   directionRange: 0
   rotationText: {fileID: 6317727248241659527}
-  size: 0
+  size: 1
   sizeText: {fileID: 6567240715288177567}
   uiObject: {fileID: 464209218190018581}
   funiture: {fileID: 3186042151321439248}
