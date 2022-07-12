@@ -62,12 +62,12 @@ public class Funiture : MonoBehaviour
 
     public void DestroyThisFuniture()
     {
-        Destroy(this.gameObject);
+        Destroy(gameObject);
     }
 
     public void SelectedNewItem(GameObject selectedGameObject)
     {
-        if (selectedGameObject.Equals(this.gameObject))
+        if (selectedGameObject.Equals(gameObject))
         {
             UiActive();
             ChangeCanvasToScaling();
@@ -83,9 +83,10 @@ public class Funiture : MonoBehaviour
         uiObject.SetActive(true);
     }
 
-    public void Accepted()
+    public void Accepted() 
     {
-        uiObject.SetActive(false);
+        if(uiObject != null)
+            uiObject.SetActive(false);
     }
 
     /// <summary>

@@ -36,15 +36,7 @@ public class Hologram : MonoBehaviour
         watcher.primaryButtonPress.AddListener(CreateObject);
         //objectToProject = this.gameObject;
         //SettingColorToHologram();
-        Transform hologramDummy = CreatePreview(visual.transform);
-        hologramCopy = hologramDummy.gameObject;
-        hologramCopy.AddComponent(typeof(HologramSpawnPoint));
-        GameObject destroyChild;
-        destroyChild = hologramCopy.transform.GetChild(1).gameObject;
-        Destroy(destroyChild);
-        hologramCopy.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<Collider>().isTrigger = true;
-
-        AddListeners(hologramCopy);
+        ChangeHologram(visual);
 
         buildingCharakter.ModeChanged += disableHologram;
     }
@@ -129,6 +121,7 @@ public class Hologram : MonoBehaviour
         destroyChild = hologramCopy.transform.GetChild(1).gameObject;
         Destroy(destroyChild);
         hologramCopy.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<Collider>().isTrigger = true;
+        Destroy(hologramCopy.GetComponent<Funiture>());
     }
 
     private void placementBlocked()
