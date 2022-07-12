@@ -12,8 +12,8 @@ public class Funiture : MonoBehaviour
 {
     [SerializeField]
     [Range(0f, 360f)]
-    private float directionRange;
-    [SerializeField] private Text rotationText;
+    public float directionRange;
+    public Text rotationText;
 
     private float sizeSteps = 0.1f;
     
@@ -28,14 +28,14 @@ public class Funiture : MonoBehaviour
 
     [SerializeField] private GameObject uiObject;
 
-    [SerializeField] private GameObject funiture;
+    public GameObject funiture;
 
     [SerializeField] private GameObject objectHolder;
 
     [SerializeField] private List<Material> designs;
 
     [SerializeField] private Slider sizeSlider;
-    [SerializeField] private Slider rotationSlider;
+    public Slider rotationSlider;
 
     [SerializeField] private UITextureHolder texturePrefab;
 
@@ -112,7 +112,7 @@ public class Funiture : MonoBehaviour
     /// <summary>
     /// Rotate the Object
     /// </summary>
-    private void SetTransformRotation()
+    public void SetTransformRotation()
     {
         
             funiture.transform.rotation = Quaternion.Euler(0, directionRange, 0);
@@ -236,7 +236,7 @@ public class Funiture : MonoBehaviour
     public void LoadingTextures()
     {
         Debug.Log("Loading Textures");
-        foreach (Transform exampleDelete in uiTextureCanvas.transform.GetChild(0))
+        foreach (Transform exampleDelete in uiTextureCanvas.transform.GetChild(0).GetChild(0))
         {
             Destroy(exampleDelete.gameObject);
         }
@@ -246,7 +246,7 @@ public class Funiture : MonoBehaviour
         {
             UITextureHolder texture = Instantiate(texturePrefab, new Vector3(0, 0, 0), Quaternion.identity);
 
-            texture.transform.SetParent(uiTextureCanvas.transform.GetChild(0), false);
+            texture.transform.SetParent(uiTextureCanvas.transform.GetChild(0).GetChild(0), false);
 
             texture.title.text = material.name;
 

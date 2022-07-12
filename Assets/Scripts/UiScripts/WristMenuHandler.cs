@@ -8,6 +8,9 @@ public class WristMenuHandler : MonoBehaviour
 {
     [SerializeField] private UIMenuChooseHandler ItemSelectCanvas;
     [SerializeField] private UIModeChoose ModeSelectCanvas;
+    [SerializeField] private GameObject UIOpener;
+    [SerializeField] private GameObject UIWindow;
+    
 
     private void Awake()
     {
@@ -29,8 +32,34 @@ public class WristMenuHandler : MonoBehaviour
 
     public void CloseMenus()
     {
-        ItemSelectCanvas.gameObject.SetActive(false);
-        ModeSelectCanvas.gameObject.SetActive(false);
+       ActivateUIOpener();
+       CloseUIWindow();
+    }
+
+    public void OpenMenus()
+    {
+        DisableUIOpener();
+        ActivateUIWindow();
+    }
+
+    public void ActivateUIOpener()
+    {
+        UIOpener.SetActive(true);
+    }
+
+    public void DisableUIOpener()
+    {
+        UIOpener.SetActive(false);
+    }
+
+    public void CloseUIWindow()
+    {
+        UIWindow.SetActive(false);
+    }
+
+    public void ActivateUIWindow()
+    {
+        UIWindow.SetActive(true);
     }
 
     public void MenuPressed(InputAction.CallbackContext context)

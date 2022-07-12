@@ -467,6 +467,16 @@ PrefabInstance:
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.UI.Slider, UnityEngine.UI
       objectReference: {fileID: 0}
+    - target: {fileID: 5847368474169550942, guid: 25e23b6b09c8d694d86314af69e5b4de,
+        type: 3}
+      propertyPath: m_Size
+      value: 0.9999998
+      objectReference: {fileID: 0}
+    - target: {fileID: 5847368474169550942, guid: 25e23b6b09c8d694d86314af69e5b4de,
+        type: 3}
+      propertyPath: m_Value
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6077818931723302499, guid: 25e23b6b09c8d694d86314af69e5b4de,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -672,6 +682,16 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8105269338262647698, guid: 25e23b6b09c8d694d86314af69e5b4de,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8105269338262647698, guid: 25e23b6b09c8d694d86314af69e5b4de,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8218259899217061348, guid: 25e23b6b09c8d694d86314af69e5b4de,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -828,10 +848,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7276187105797098572}
     m_Modifications:
+    - target: {fileID: 3177594766818935787, guid: 131ba9e827724ae4ea39cba2e1a8ea8d,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5078100488486745579, guid: 131ba9e827724ae4ea39cba2e1a8ea8d,
         type: 3}
       propertyPath: m_Name
       value: TableBlue
+      objectReference: {fileID: 0}
+    - target: {fileID: 5078100488486745579, guid: 131ba9e827724ae4ea39cba2e1a8ea8d,
+        type: 3}
+      propertyPath: m_TagString
+      value: Funiture
       objectReference: {fileID: 0}
     - target: {fileID: 8080109353915090936, guid: 131ba9e827724ae4ea39cba2e1a8ea8d,
         type: 3}

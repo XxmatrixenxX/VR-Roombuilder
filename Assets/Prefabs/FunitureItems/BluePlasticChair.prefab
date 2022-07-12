@@ -467,6 +467,11 @@ PrefabInstance:
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.UI.Slider, UnityEngine.UI
       objectReference: {fileID: 0}
+    - target: {fileID: 5847368474169550942, guid: 25e23b6b09c8d694d86314af69e5b4de,
+        type: 3}
+      propertyPath: m_Size
+      value: 0.99999964
+      objectReference: {fileID: 0}
     - target: {fileID: 6077818931723302499, guid: 25e23b6b09c8d694d86314af69e5b4de,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -672,6 +677,16 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8105269338262647698, guid: 25e23b6b09c8d694d86314af69e5b4de,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8105269338262647698, guid: 25e23b6b09c8d694d86314af69e5b4de,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8218259899217061348, guid: 25e23b6b09c8d694d86314af69e5b4de,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -828,10 +843,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4196187014255808683}
     m_Modifications:
+    - target: {fileID: 2441034148090437060, guid: 5c68e2c61360b7645af6e704205aedef,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4701845291282582801, guid: 5c68e2c61360b7645af6e704205aedef,
         type: 3}
       propertyPath: m_Name
       value: ChairBlue
+      objectReference: {fileID: 0}
+    - target: {fileID: 4701845291282582801, guid: 5c68e2c61360b7645af6e704205aedef,
+        type: 3}
+      propertyPath: m_TagString
+      value: Funiture
       objectReference: {fileID: 0}
     - target: {fileID: 8582478500457037570, guid: 5c68e2c61360b7645af6e704205aedef,
         type: 3}

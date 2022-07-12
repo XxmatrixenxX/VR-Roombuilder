@@ -77,12 +77,12 @@ public class BuildingCharakter : MonoBehaviour
 
    private void EnableBuildingSelect()
    {
-      
+      wristMenu.OpenMenus();
    }
    
    private void DisableBuildingSelect()
    {
-      
+      wristMenu.CloseMenus();
    }
 
    private void CameraChangeTopDown()

@@ -39,8 +39,12 @@ public class Hologram : MonoBehaviour
         Transform hologramDummy = CreatePreview(visual.transform);
         hologramCopy = hologramDummy.gameObject;
         hologramCopy.AddComponent(typeof(HologramSpawnPoint));
+        GameObject destroyChild;
+        destroyChild = hologramCopy.transform.GetChild(1).gameObject;
+        Destroy(destroyChild);
+        hologramCopy.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<Collider>().isTrigger = true;
 
-        addListeners(hologramCopy);
+        AddListeners(hologramCopy);
 
         buildingCharakter.ModeChanged += disableHologram;
     }
@@ -50,9 +54,9 @@ public class Hologram : MonoBehaviour
         hologramMover();
     }
 
-    private void addListeners(GameObject hologramSpawnPointObject)
+    private void AddListeners(GameObject hologramSpawnPointObject)
     {
-        if (hologramSpawnPointObject.GetComponent(typeof(HologramSpawnPoint)))
+        if (hologramSpawnPointObject.GetComponent(typeof(HologramSpawnPoint)) != null)
         {
             hologramSpawnPointObject.GetComponent<HologramSpawnPoint>().HologramEnteredFuniture += placementBlocked;
             hologramSpawnPointObject.GetComponent<HologramSpawnPoint>().HologramExitFuniture += placementOpen;
@@ -78,7 +82,8 @@ public class Hologram : MonoBehaviour
         if (hologramCopy != null)
         {
             hologramCopy.transform.position = hologramReferenzPosition.position;
-            hologramCopy.transform.eulerAngles = new Vector3(hologramReferenzPosition.transform.eulerAngles.x, xr.transform.eulerAngles.y + 90, hologramReferenzPosition.transform.eulerAngles.z);
+            var eulerAngles = hologramReferenzPosition.transform.eulerAngles;
+            hologramCopy.transform.eulerAngles = new Vector3(eulerAngles.x, xr.transform.eulerAngles.y + 90, eulerAngles.z);
             //Vector3 newRotation = new Vector3(hologramReferenzPosition.transform.eulerAngles.x, mainCam.transform.eulerAngles.y, hologramReferenzPosition.transform.eulerAngles.z);
             //hologramPivotPosition.transform.eulerAngles = newRotation;
             //hologramCopy.transform.eulerAngles = newRotation;
@@ -90,8 +95,20 @@ public class Hologram : MonoBehaviour
 
         if (pressed)
         {
-            if(!blocked)
-            Instantiate(visual, hologramCopy.transform.position, hologramCopy.transform.rotation);
+            if(buildingCharakter.activeMode == SC_For_Mode.Mode.buildingMode || buildingCharakter.activeMode == SC_For_Mode.Mode.chooseBuildingMode)
+            if (!blocked)
+            {
+                Instantiate(visual, hologramCopy.transform.position, hologramCopy.transform.rotation);
+                //GameObject visualTransform = Instantiate(visual, hologramCopy.transform.position, Quaternion.identity);
+                // if (visualTransform.GetComponent<Funiture>() != null)
+                // {
+                //     visualTransform.GetComponent<Funiture>().funiture.transform.rotation = hologramCopy.transform.rotation;
+                //     visualTransform.GetComponent<Funiture>().directionRange = hologramCopy.transform.rotation.y;
+                //     visualTransform.GetComponent<Funiture>().rotationSlider.value = hologramCopy.transform.rotation.y;
+                //     visualTransform.GetComponent<Funiture>().ChangeRotationText();
+                // }
+                    
+            }
         }
     }
 
@@ -107,7 +124,11 @@ public class Hologram : MonoBehaviour
         Transform hologramDummy = CreatePreview(visual.transform);
         hologramCopy = hologramDummy.gameObject;
         hologramCopy.AddComponent(typeof(HologramSpawnPoint));
-        addListeners(hologramCopy);
+        AddListeners(hologramCopy);
+        GameObject destroyChild;
+        destroyChild = hologramCopy.transform.GetChild(1).gameObject;
+        Destroy(destroyChild);
+        hologramCopy.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<Collider>().isTrigger = true;
     }
 
     private void placementBlocked()
@@ -130,7 +151,7 @@ public class Hologram : MonoBehaviour
 
     private void disableHologram()
     {
-        if (buildingCharakter.activeMode != SC_For_Mode.Mode.buildingMode || buildingCharakter.activeMode != SC_For_Mode.Mode.chooseBuildingMode)
+        if (buildingCharakter.activeMode != SC_For_Mode.Mode.buildingMode && buildingCharakter.activeMode != SC_For_Mode.Mode.chooseBuildingMode)
         {
             hologramCopy.gameObject.SetActive(false);
         }
