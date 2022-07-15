@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1686984826358883282}
   m_Layer: 0
   m_Name: RotationPoint
-  m_TagString: Untagged
+  m_TagString: Funiture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -101,6 +101,7 @@ MonoBehaviour:
   uiScaleCanvas: {fileID: 5402083351585365426}
   uiTextureCanvas: {fileID: 4802049657838730332}
   buildingCharakter: {fileID: 0}
+  funitureString: Funiture
   funitureCollider: {fileID: 0}
 --- !u!114 &5744925870662280607
 MonoBehaviour:
@@ -204,7 +205,7 @@ GameObject:
   - component: {fileID: 499708577870607744}
   m_Layer: 0
   m_Name: UIHolder
-  m_TagString: Untagged
+  m_TagString: Funiture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -426,6 +427,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4316766108482457347, guid: 25e23b6b09c8d694d86314af69e5b4de,
+        type: 3}
+      propertyPath: m_Value
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4316766108482457347, guid: 25e23b6b09c8d694d86314af69e5b4de,
         type: 3}
@@ -692,6 +698,11 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8149097728676030517, guid: 25e23b6b09c8d694d86314af69e5b4de,
+        type: 3}
+      propertyPath: m_Text
+      value: -180
+      objectReference: {fileID: 0}
     - target: {fileID: 8218259899217061348, guid: 25e23b6b09c8d694d86314af69e5b4de,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -891,7 +902,7 @@ PrefabInstance:
     - target: {fileID: 8080109353915090936, guid: 131ba9e827724ae4ea39cba2e1a8ea8d,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8080109353915090936, guid: 131ba9e827724ae4ea39cba2e1a8ea8d,
         type: 3}

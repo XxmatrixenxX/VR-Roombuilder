@@ -15,10 +15,8 @@ public class Hologram : MonoBehaviour
     //[SerializeField] private GridBuildingSystem gridSystem;
 
     [SerializeField] private Transform hologramReferenzPosition;
+    [SerializeField] private Transform visualCreationPoint;
 
-    [SerializeField] private HologramSpawnPoint _hologramSpawnPoint;
-    [SerializeField] private Transform hologramPivotPosition;
-    
     [SerializeField] private Transform xr;
 
     [SerializeField] private bool blocked;
@@ -58,6 +56,9 @@ public class Hologram : MonoBehaviour
 
     public Transform CreatePreview (Transform aPrefab)
     {
+        
+        Debug.Log("Create Preview");
+        
         Transform obj = (Transform)Instantiate(aPrefab);
         foreach (var renderer in obj.GetComponentsInChildren<Renderer>(true))
             renderer.sharedMaterial = ghostMaterial;
@@ -75,10 +76,9 @@ public class Hologram : MonoBehaviour
         {
             hologramCopy.transform.position = hologramReferenzPosition.position;
             var eulerAngles = hologramReferenzPosition.transform.eulerAngles;
+            //90 different for the Transform
             hologramCopy.transform.eulerAngles = new Vector3(eulerAngles.x, xr.transform.eulerAngles.y + 90, eulerAngles.z);
-            //Vector3 newRotation = new Vector3(hologramReferenzPosition.transform.eulerAngles.x, mainCam.transform.eulerAngles.y, hologramReferenzPosition.transform.eulerAngles.z);
-            //hologramPivotPosition.transform.eulerAngles = newRotation;
-            //hologramCopy.transform.eulerAngles = newRotation;
+            
         }
     }
     
@@ -87,25 +87,18 @@ public class Hologram : MonoBehaviour
 
         if (pressed)
         {
+            Debug.Log("Create Object");
             if(buildingCharakter.activeMode == SC_For_Mode.Mode.buildingMode || buildingCharakter.activeMode == SC_For_Mode.Mode.chooseBuildingMode)
-            if (!blocked)
-            {
-                Instantiate(visual, hologramCopy.transform.position, hologramCopy.transform.rotation);
-                //GameObject visualTransform = Instantiate(visual, hologramCopy.transform.position, Quaternion.identity);
-                // if (visualTransform.GetComponent<Funiture>() != null)
-                // {
-                //     visualTransform.GetComponent<Funiture>().funiture.transform.rotation = hologramCopy.transform.rotation;
-                //     visualTransform.GetComponent<Funiture>().directionRange = hologramCopy.transform.rotation.y;
-                //     visualTransform.GetComponent<Funiture>().rotationSlider.value = hologramCopy.transform.rotation.y;
-                //     visualTransform.GetComponent<Funiture>().ChangeRotationText();
-                // }
-                    
-            }
+                if (!blocked)
+                {
+                    Instantiate(visual, visualCreationPoint.position, hologramCopy.transform.rotation);
+                }
         }
     }
 
     public void ChangeHologram(GameObject newObjectTransform)
     {
+        Debug.Log("ChangeHologram");
         visual = newObjectTransform;
         if (hologramCopy != null)
         {
@@ -113,15 +106,24 @@ public class Hologram : MonoBehaviour
             hologramCopy = new GameObject();
         }
 
-        Transform hologramDummy = CreatePreview(visual.transform);
-        hologramCopy = hologramDummy.gameObject;
-        hologramCopy.AddComponent(typeof(HologramSpawnPoint));
-        AddListeners(hologramCopy);
-        GameObject destroyChild;
-        destroyChild = hologramCopy.transform.GetChild(1).gameObject;
-        Destroy(destroyChild);
-        hologramCopy.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<Collider>().isTrigger = true;
-        Destroy(hologramCopy.GetComponent<Funiture>());
+        Transform hologramDummy;
+        
+        if (visual.GetComponent(typeof(Funiture)))
+        {
+            Debug.Log("ChangeHologram has Funiture");
+            Funiture funitureobject = visual.gameObject.GetComponent<Funiture>();
+            hologramDummy = CreatePreview(funitureobject.funiture.transform);
+            hologramCopy = hologramDummy.gameObject;
+            hologramCopy.AddComponent(typeof(HologramSpawnPoint));
+            AddListeners(hologramCopy);
+        }
+        else
+        {
+            hologramDummy = CreatePreview(visual.transform);
+            hologramCopy = hologramDummy.gameObject;
+            hologramCopy.AddComponent(typeof(HologramSpawnPoint));
+            AddListeners(hologramCopy);
+        }
     }
 
     private void placementBlocked()
@@ -144,6 +146,7 @@ public class Hologram : MonoBehaviour
 
     private void disableHologram()
     {
+        Debug.Log("Disabled Hologram");
         if (buildingCharakter.activeMode != SC_For_Mode.Mode.buildingMode && buildingCharakter.activeMode != SC_For_Mode.Mode.chooseBuildingMode)
         {
             hologramCopy.gameObject.SetActive(false);

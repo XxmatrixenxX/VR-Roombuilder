@@ -3,16 +3,20 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Numerics;
+using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using Object = System.Object;
+using Quaternion = UnityEngine.Quaternion;
+using Vector3 = UnityEngine.Vector3;
 
 public class Funiture : MonoBehaviour
 {
     [SerializeField]
     [Range(0f, 360f)]
-    public float directionRange;
+    public float directionRange = 0;
     public Text rotationText;
 
     private float sizeSteps = 0.1f;
@@ -43,6 +47,8 @@ public class Funiture : MonoBehaviour
     [SerializeField] private GameObject uiTextureCanvas;
 
     [SerializeField] private BuildingCharakter buildingCharakter;
+
+    [SerializeField] private String funitureString = "Funiture";
     
     
 
@@ -50,23 +56,28 @@ public class Funiture : MonoBehaviour
 
     private void Start()
     {
+        funitureCollider = funiture.gameObject.GetComponent<Collider>();
         SliderStartPosition();
+        buildingCharakter = FindObjectOfType<BuildingCharakter>();
         buildingCharakter.SelectedNewItem += SelectedNewItem;
+        ChangeTagOfChild();
+        Accepted();
     }
 
     private void Awake()
     {
-        buildingCharakter = FindObjectOfType<BuildingCharakter>();
-        Accepted();
     }
 
     public void DestroyThisFuniture()
     {
+        Debug.Log("Destroy Funiture");
         Destroy(gameObject);
     }
 
     public void SelectedNewItem(GameObject selectedGameObject)
     {
+        Debug.Log("Selected a new item");
+        
         if (selectedGameObject.Equals(gameObject))
         {
             UiActive();
@@ -88,86 +99,26 @@ public class Funiture : MonoBehaviour
         if(uiObject != null)
             uiObject.SetActive(false);
     }
-
-    /// <summary>
-    /// Calculate the Float for the Range
-    /// </summary>
-    /// <param name="direction">Parameter for the direction the Funiture show to at the Moment</param>
-    /// <param name="difference">Parameter for turn amount, should not greater then 360f and not smaller then -360f</param>
-    private float CalculateDirection(float direction, float difference)
-    {
-        float result = direction + difference;
-
-        if (result > 360f)
-        {
-            return result - 360f;
-        }
-
-        if (result == 0f)
-        {
-            return 0f;
-        }
-        return 360f + result;
-    }
-
-    /// <summary>
-    /// Rotate the Object
-    /// </summary>
-    public void SetTransformRotation()
-    {
-        
-            funiture.transform.rotation = Quaternion.Euler(0, directionRange, 0);
-    }
     
-    /// <summary>
-    /// Changes Size of Object
-    /// </summary>
-    /// <param name="bigger"> If true it will be bigger.</param>
-    private void ChangeSize(bool bigger)
-    {
-        if (bigger)
-        {
-            directionRange = CalculateSize(directionRange,sizeSteps );
-        }
-        else 
-        {
-            directionRange = CalculateSize(directionRange, -sizeSteps);
-        }
-    }
-    
-    /// <summary>
-    /// Calculate the Float for the Range
-    /// </summary>
-    /// <param name="size">Parameter for the Size of the Funiture</param>
-    /// <param name="sizeDifference">Parameter for size amount, should not greater then 10f and not smaller then -10f</param>
-    private float CalculateSize(float size, float sizeDifference)
-    {
-        float result = size + sizeDifference;
-
-        if (result > 2f)
-        {
-            return result - 2f;
-        }
-
-        if (result == 0.1f)
-        {
-            return 0.1f;
-        }
-        return 2f + result;
-    }
-
     /// <summary>
     /// Changes Sizes of Object
     /// </summary>
     private void SetSize(float size)
     {
+        Debug.Log("Changed Size of funiture");
         funiture.transform.localScale = new Vector3(size, size, size);
     }
 
     public void SliderStartPosition()
     {
-        Debug.Log("Funiture: SliderPosition Size: "+ size);
+        Debug.Log("SliderStartPosition: Funiture: SliderPosition Size: "+ size + " RotationPosition Rotation" + directionRange);
         sizeSlider.value = size * 10;
+        if (funiture.transform.eulerAngles.y + 90 > 360)
+        {
+            directionRange = 45;
+        }
+        else
+            directionRange = funiture.transform.eulerAngles.y +90 ;
         rotationSlider.value = directionRange;
         SliderSize(sizeSlider);
         SliderRotation(rotationSlider);
@@ -175,26 +126,16 @@ public class Funiture : MonoBehaviour
 
     public void SliderSize(Slider size)
     {
+        Debug.Log("Scale Slider adjusted");
         this.size = size.value * sizeSteps;
         SetSize(this.size);
         ChangeSizeText();
     }
-    
-    public void SliderRotation(Slider rotation)
-    {
-        this.directionRange = rotation.value -180;
-        SetTransformRotation();
-        ChangeRotationText();
-    }
 
     public void ChangeSizeText()
     {
+        Debug.Log("Size Text adjusted");
         sizeText.text = size.ToString(CultureInfo.InvariantCulture);
-    }
-
-    public void ChangeRotationText()
-    {
-        rotationText.text = (directionRange).ToString(CultureInfo.InvariantCulture);
     }
 
     public void SelectedThisItemForSettings(GameObject gameObject)
@@ -204,14 +145,6 @@ public class Funiture : MonoBehaviour
         buildingCharakter.InvokeSelectedNewItem(gameObject);
     }
 
-    public void ChangeCanvasToTexture()
-    {
-        Debug.Log("ChangeCanvasToTexture Canvas");
-        uiScaleCanvas.SetActive(false);
-        uiTextureCanvas.SetActive(true);
-        LoadingTextures();
-    }
-
     public void ChangeCanvasToScaling()
     {
         Debug.Log("ChangeCanvasToScaling Canvas");
@@ -219,7 +152,6 @@ public class Funiture : MonoBehaviour
         uiTextureCanvas.SetActive(false);
     }
     
-
     public void SwapDesign(int number)
     {
         Debug.Log("SwapDesign: " + number);
@@ -255,6 +187,46 @@ public class Funiture : MonoBehaviour
            
             texture.button.onClick.AddListener(delegate { SwapDesign(texture.number); });
             counter++;
+        }
+    }
+
+    public void ChangeCanvasToTexture()
+    {
+        Debug.Log("ChangeCanvasToTexture Canvas");
+        uiScaleCanvas.SetActive(false);
+        uiTextureCanvas.SetActive(true);
+        LoadingTextures();
+    }
+
+    public void ChangeRotationText()
+    {
+        rotationText.text = (directionRange -180).ToString(CultureInfo.InvariantCulture);
+        Debug.Log("Rotation Text Changed: directionRange: " + directionRange +"/ rotation Text: " + rotationText.text);
+    }
+    
+    /// <summary>
+    /// Rotate the Object
+    /// </summary>
+    public void SetTransformRotation()
+    {
+        funiture.transform.rotation = Quaternion.Euler(0, directionRange, 0);
+        Debug.Log("Funiture rotated Quaternion: " + funiture.transform.rotation );  
+    }
+    
+    public void SliderRotation(Slider rotation)
+    {
+        Debug.Log("SliderRotation changed RotationValue: " + rotation.value);
+        directionRange = rotation.value;
+        SetTransformRotation();
+        ChangeRotationText();
+    }
+    
+    public void ChangeTagOfChild()
+    {
+        Debug.Log("Changed Tag of all children");
+        foreach (Transform transform in gameObject.transform)
+        {
+            transform.gameObject.tag = funitureString;
         }
     }
     

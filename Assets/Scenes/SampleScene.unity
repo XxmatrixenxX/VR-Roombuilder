@@ -153,6 +153,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 716462907}
+  - {fileID: 458104842}
   m_Father: {fileID: 1832041642}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -444,6 +445,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44d0521fdc9c56c48a0546655ff05e38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &458104841
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 458104842}
+  m_Layer: 0
+  m_Name: SpawnOfObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &458104842
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 458104841}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.005, y: 0, z: 0.85}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 104041843}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &486407352
 GameObject:
   m_ObjectHideFlags: 0
@@ -661,7 +692,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 716462907}
-  - component: {fileID: 716462909}
   m_Layer: 0
   m_Name: HologramSpawnPoint
   m_TagString: HologramPoint
@@ -677,25 +707,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 716462906}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.005, y: 0, z: 0.85}
+  m_LocalPosition: {x: 0.495, y: 0, z: 1.35}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 104041843}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &716462909
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 716462906}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.5, y: 0.5, z: 0.5}
-  m_Center: {x: 0.25, y: 0.25, z: 0.25}
 --- !u!1 &745629479
 GameObject:
   m_ObjectHideFlags: 0
@@ -1205,6 +1222,16 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3958640187935411525, guid: 81d5f4dd8d60a5743b60270407dcc56f,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3958640187935411525, guid: 81d5f4dd8d60a5743b60270407dcc56f,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4319472247303351223, guid: 81d5f4dd8d60a5743b60270407dcc56f,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -1374,6 +1401,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7130841847659987107, guid: 81d5f4dd8d60a5743b60270407dcc56f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.0008239746
       objectReference: {fileID: 0}
     - target: {fileID: 7505405060655493223, guid: 81d5f4dd8d60a5743b60270407dcc56f,
         type: 3}
@@ -2228,8 +2260,7 @@ MonoBehaviour:
   ghostMaterial: {fileID: 2100000, guid: 8ca2a0e80ec91744aa3f6e533ae39ea4, type: 2}
   blockedMaterial: {fileID: 2100000, guid: 0bddcc3dccf801f45b28cd6421293013, type: 2}
   hologramReferenzPosition: {fileID: 716462907}
-  _hologramSpawnPoint: {fileID: 0}
-  hologramPivotPosition: {fileID: 104041843}
+  visualCreationPoint: {fileID: 458104842}
   xr: {fileID: 1832041642}
   blocked: 0
   watcher: {fileID: 227571133}
@@ -4540,6 +4571,11 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4338156823367441476, guid: ab4f4abb4e71cee49b2d7ae71e19f779,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.00015258789
+      objectReference: {fileID: 0}
     - target: {fileID: 5531637221626679172, guid: ab4f4abb4e71cee49b2d7ae71e19f779,
         type: 3}
       propertyPath: m_IsTrigger
@@ -4594,6 +4630,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_WholeNumbers
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7506944237367890338, guid: ab4f4abb4e71cee49b2d7ae71e19f779,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7506944237367890338, guid: ab4f4abb4e71cee49b2d7ae71e19f779,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7532073302504794261, guid: ab4f4abb4e71cee49b2d7ae71e19f779,
         type: 3}
