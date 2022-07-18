@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Funiture
   - HologramPoint
+  - FuniturePlacementArea
   layers:
   - Default
   - TransparentFX

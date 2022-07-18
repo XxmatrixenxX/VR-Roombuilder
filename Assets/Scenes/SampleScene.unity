@@ -1125,7 +1125,7 @@ PrefabInstance:
     - target: {fileID: 658413994722731037, guid: 81d5f4dd8d60a5743b60270407dcc56f,
         type: 3}
       propertyPath: m_TagString
-      value: Funiture
+      value: FuniturePlacementArea
       objectReference: {fileID: 0}
     - target: {fileID: 1187454036195732372, guid: 81d5f4dd8d60a5743b60270407dcc56f,
         type: 3}
@@ -1146,6 +1146,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2849179051861801285, guid: 81d5f4dd8d60a5743b60270407dcc56f,
+        type: 3}
+      propertyPath: m_TagString
+      value: FuniturePlacementArea
       objectReference: {fileID: 0}
     - target: {fileID: 2903323572635907045, guid: 81d5f4dd8d60a5743b60270407dcc56f,
         type: 3}
@@ -2257,12 +2262,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   visual: {fileID: 6332839867287566586, guid: ab4f4abb4e71cee49b2d7ae71e19f779, type: 3}
   hologramCopy: {fileID: 0}
+  hologramCopyForTables: {fileID: 0}
   ghostMaterial: {fileID: 2100000, guid: 8ca2a0e80ec91744aa3f6e533ae39ea4, type: 2}
   blockedMaterial: {fileID: 2100000, guid: 0bddcc3dccf801f45b28cd6421293013, type: 2}
   hologramReferenzPosition: {fileID: 716462907}
   visualCreationPoint: {fileID: 458104842}
   xr: {fileID: 1832041642}
   blocked: 0
+  hightOfObject: 0
   watcher: {fileID: 227571133}
   buildingCharakter: {fileID: 0}
 --- !u!4 &1127420699
