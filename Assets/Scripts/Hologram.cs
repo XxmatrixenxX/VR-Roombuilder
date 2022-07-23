@@ -36,8 +36,6 @@ public class Hologram : MonoBehaviour
     private void Start()
     {
         watcher.primaryButtonPress.AddListener(CreateObject);
-        //objectToProject = this.gameObject;
-        //SettingColorToHologram();
         ChangeHologram(visual);
 
         buildingCharakter.ModeChanged += disableHologram;
@@ -179,6 +177,14 @@ public class Hologram : MonoBehaviour
                 rigidbody.useGravity = false;
                 rigidbody.isKinematic = true;
                 hologramCopy.AddComponent(typeof(HologramSpawnPoint));
+                if(hologramCopy.GetComponent(typeof(Collider)) != null)
+                {
+                    hologramCopy.GetComponent<Collider>().isTrigger = true;
+                }
+                else
+                {
+                    hologramCopy.transform.GetChild(0).GetComponent<Collider>().isTrigger = true;
+                }
                 AddListeners(hologramCopy);
             }
             else //If the Object does not have a Funiture Object
@@ -190,6 +196,14 @@ public class Hologram : MonoBehaviour
                 rigidbody.useGravity = false;
                 rigidbody.isKinematic = true;
                 hologramCopy.AddComponent(typeof(HologramSpawnPoint));
+                if(hologramCopy.GetComponent(typeof(Collider)) != null)
+                {
+                    hologramCopy.GetComponent<Collider>().isTrigger = true;
+                }
+                else
+                {
+                    hologramCopy.transform.GetChild(0).GetComponent<Collider>().isTrigger = true;
+                }
                 AddListeners(hologramCopy);
             }
         }

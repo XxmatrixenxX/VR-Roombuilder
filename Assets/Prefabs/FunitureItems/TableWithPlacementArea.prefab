@@ -114,7 +114,7 @@ MonoBehaviour:
   m_Activated:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 4959510038178464368}
         m_TargetAssemblyTypeName: Funiture, Assembly-CSharp
         m_MethodName: SelectedThisItemForSettings
         m_Mode: 2
@@ -254,7 +254,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1283816819452414806}
-  - {fileID: 875031652011575834}
   m_Father: {fileID: 1686984826358883282}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -279,7 +278,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 4959510038178464368}
     - target: {fileID: 224014224857707828, guid: 25e23b6b09c8d694d86314af69e5b4de,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
@@ -469,7 +468,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 4959510038178464368}
     - target: {fileID: 4316766108482457347, guid: 25e23b6b09c8d694d86314af69e5b4de,
         type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
@@ -669,7 +668,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 4959510038178464368}
     - target: {fileID: 6752244319560279696, guid: 25e23b6b09c8d694d86314af69e5b4de,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
@@ -774,7 +773,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 4959510038178464368}
     - target: {fileID: 8262749512199132093, guid: 25e23b6b09c8d694d86314af69e5b4de,
         type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
@@ -899,12 +898,12 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 7276187105797098572}
+    m_TransformParent: {fileID: 1283816819452414806}
     m_Modifications:
     - target: {fileID: 5171593967954915506, guid: 2b83fadf759a9e14d8a04eb56ac018c5,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5171593967954915506, guid: 2b83fadf759a9e14d8a04eb56ac018c5,
         type: 3}
@@ -979,7 +978,7 @@ PrefabInstance:
     - target: {fileID: 3177594766818935787, guid: 131ba9e827724ae4ea39cba2e1a8ea8d,
         type: 3}
       propertyPath: m_IsTrigger
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5078100488486745579, guid: 131ba9e827724ae4ea39cba2e1a8ea8d,
         type: 3}

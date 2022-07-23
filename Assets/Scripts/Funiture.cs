@@ -46,7 +46,7 @@ public class Funiture : MonoBehaviour
     [SerializeField] private GameObject uiScaleCanvas;
     [SerializeField] private GameObject uiTextureCanvas;
 
-    [SerializeField] private BuildingCharakter buildingCharakter;
+    public BuildingCharakter buildingCharakter;
 
     [SerializeField] private String funitureString = "Funiture";
     
@@ -56,16 +56,21 @@ public class Funiture : MonoBehaviour
 
     private void Start()
     {
+       StartOptions();
+    }
+
+    private void Awake()
+    {
+    }
+
+    public virtual void StartOptions()
+    {
         funitureCollider = funiture.gameObject.GetComponent<Collider>();
         SliderStartPosition();
         buildingCharakter = FindObjectOfType<BuildingCharakter>();
         buildingCharakter.SelectedNewItem += SelectedNewItem;
         ChangeTagOfChild();
         Accepted();
-    }
-
-    private void Awake()
-    {
     }
 
     public void DestroyThisFuniture()
@@ -113,12 +118,12 @@ public class Funiture : MonoBehaviour
     {
         Debug.Log("SliderStartPosition: Funiture: SliderPosition Size: "+ size + " RotationPosition Rotation" + directionRange);
         sizeSlider.value = size * 10;
-        if (funiture.transform.eulerAngles.y + 90 > 360)
+        if (funiture.transform.eulerAngles.y > 360)
         {
             directionRange = 45;
         }
         else
-            directionRange = funiture.transform.eulerAngles.y +90 ;
+            directionRange = funiture.transform.eulerAngles.y ;
         rotationSlider.value = directionRange;
         SliderSize(sizeSlider);
         SliderRotation(rotationSlider);
@@ -226,7 +231,7 @@ public class Funiture : MonoBehaviour
         Debug.Log("Changed Tag of all children");
         foreach (Transform transform in gameObject.transform)
         {
-            transform.gameObject.tag = funitureString;
+            transform.tag = funitureString;
         }
     }
     

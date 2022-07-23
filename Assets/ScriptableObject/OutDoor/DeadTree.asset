@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5a376856bb7c064da131729d4d5f8c3, type: 3}
+  m_Name: DeadTree
+  m_EditorClassIdentifier: 
+  item: {fileID: 2343104502628297971, guid: 7960cc99cf1a3a046aa4cb3d02a4ac6b, type: 3}
+  itemName: Deadtree
+  description: a fallen Tree

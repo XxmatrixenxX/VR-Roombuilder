@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b6434be1ffc4b328694a268b0a674ef, type: 3}
+  m_Name: OutDoor
+  m_EditorClassIdentifier: 
+  menuItemList:
+  - {fileID: 11400000, guid: f2049e2a12d881642be4ec888f609b10, type: 2}
+  - {fileID: 11400000, guid: 219912209ba2964498fe53c185e88f0c, type: 2}
+  - {fileID: 11400000, guid: e12d99ec123c2654aaa4b2c5448d04bb, type: 2}
+  - {fileID: 11400000, guid: 7ab361fefa12a1642802ad2c8540dda3, type: 2}
+  - {fileID: 11400000, guid: c89622cc096fd464d848efb32d65dfc0, type: 2}
+  - {fileID: 11400000, guid: 9bb67c0080a32904b8a360022b629a5e, type: 2}
+  - {fileID: 11400000, guid: 024e958a96637284fa33e742bb6dc0a4, type: 2}
+  - {fileID: 11400000, guid: a1fe3573189efd645bd81f18fc01e74f, type: 2}
+  - {fileID: 11400000, guid: fcf8f0cf2dd7a5e4097108eedc46c142, type: 2}
+  - {fileID: 11400000, guid: 02b5bd762a2899946bcb016758724475, type: 2}
+  - {fileID: 11400000, guid: 5dffa718b28ccf64a997e89404509cd8, type: 2}
+  - {fileID: 11400000, guid: 4d7e96201326a4049a81580ef91fcbbe, type: 2}
+  - {fileID: 11400000, guid: bd566e37eae857e40b1ecab3d77348ab, type: 2}
+  - {fileID: 11400000, guid: 69a8fada8605a5f408330f506b9510e2, type: 2}
+  - {fileID: 11400000, guid: b8c463512f7cdc14e90f2032f7277642, type: 2}
+  - {fileID: 11400000, guid: 1565b82231cde4043b347c05e92c5087, type: 2}
+  ListTypeName: OutDoor

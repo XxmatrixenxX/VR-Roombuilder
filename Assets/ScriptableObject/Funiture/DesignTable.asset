@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: DesignTable
   m_EditorClassIdentifier: 
   item: {fileID: 658413994722731037, guid: 81d5f4dd8d60a5743b60270407dcc56f, type: 3}
-  itemName: DesignTable
+  itemName: Plastictable with Designs
   description: Table to Place in the Location

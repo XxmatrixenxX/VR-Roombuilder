@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: DesignChair
   m_EditorClassIdentifier: 
   item: {fileID: 6332839867287566586, guid: ab4f4abb4e71cee49b2d7ae71e19f779, type: 3}
-  itemName: ChairWithDesigns
-  description: A Chair With Different Designs
+  itemName: PlasticChairWithDesigns
+  description: 'A Chair '

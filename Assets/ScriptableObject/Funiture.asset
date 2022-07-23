@@ -15,4 +15,8 @@ MonoBehaviour:
   menuItemList:
   - {fileID: 11400000, guid: 9fd7409b355bfda4bb5629c0a7f2ff17, type: 2}
   - {fileID: 11400000, guid: b24e0b5d97c6f274dbeac2ddf5ae28d4, type: 2}
+  - {fileID: 11400000, guid: 66c8319805ded5a41bc3ad5110a3322d, type: 2}
+  - {fileID: 11400000, guid: d80e050e2bbc8c946859f8cd1fdaf80b, type: 2}
+  - {fileID: 11400000, guid: b4a4a2f0b17dd1c42bdb32a3f44c6adf, type: 2}
+  - {fileID: 11400000, guid: 15ff894a985b06a498c70b99a01149bd, type: 2}
   ListTypeName: Funiture
