@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b6434be1ffc4b328694a268b0a674ef, type: 3}
   m_Name: SmallObjects
   m_EditorClassIdentifier: 
-  menuItemList: []
-  ListTypeName: 
+  menuItemList:
+  - {fileID: 11400000, guid: 678ed7fa81bdb4649af05cb1cfad434a, type: 2}
+  ListTypeName: SmallObjects
