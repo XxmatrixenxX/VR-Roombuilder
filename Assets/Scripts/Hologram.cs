@@ -38,7 +38,7 @@ public class Hologram : MonoBehaviour
         watcher.primaryButtonPress.AddListener(CreateObject);
         ChangeHologram(visual);
 
-        buildingCharakter.ModeChanged += disableHologram;
+        buildingCharakter.ModeChanged += DisableHologram;
     }
 
     private void Update()
@@ -53,12 +53,21 @@ public class Hologram : MonoBehaviour
         {
             Debug.Log("Added HologramSpawnPoint Listeners");
             HologramSpawnPoint spawnpoint = hologramSpawnPointObject.GetComponent<HologramSpawnPoint>();
-            //for Basic Funiture
-            spawnpoint.HologramEnteredFuniture += placementBlocked;
-            spawnpoint.HologramExitFuniture += placementOpen;
-            //for Tables
-            spawnpoint.HologramEnteredFunitureTable += FunitureWithPlacementArea;
-            spawnpoint.HologramExitFunitureTable += DestroyHologramForTables;
+            if (spawnpoint.OnTable)
+            {
+                //for Table Hologram
+                spawnpoint.TopHologramEnteredFuniture += EnteredTable;
+                spawnpoint.TopHologramExit += ExitTable;
+            }
+            else
+            {
+                //for Basic Funiture
+                spawnpoint.HologramEnteredFuniture += EnteredNormal;
+                spawnpoint.HologramExitFuniture += ExitNormal;
+                //for Tables
+                spawnpoint.HologramEnteredFunitureTable += FunitureWithPlacementArea;
+                spawnpoint.HologramExitFunitureTable += DestroyHologramForTables;
+            }
         }
     }
 
@@ -83,8 +92,15 @@ public class Hologram : MonoBehaviour
         {
             hologramCopy.transform.position = hologramReferenzPosition.position;
             var eulerAngles = hologramReferenzPosition.transform.eulerAngles;
+            //Normal if Grabable
+            if (visual.GetComponent(typeof(FunitureGrabable)) != null)
+            {
+                hologramCopy.transform.eulerAngles =
+                    new Vector3(eulerAngles.x, xr.transform.eulerAngles.y, eulerAngles.z);
+            }
             //90 different for the Transform
-            hologramCopy.transform.eulerAngles =
+            else
+                hologramCopy.transform.eulerAngles =
                 new Vector3(eulerAngles.x, xr.transform.eulerAngles.y + 90, eulerAngles.z);
         }
     }
@@ -93,7 +109,7 @@ public class Hologram : MonoBehaviour
     {
         hightOfObject = item.gettingHightOfFuniture();
         CreateHologramForTables();
-        placementBlocked();
+        PlacementBlocked(hologramCopy);
     }
 
     //Creates a Visual on Top of the Table
@@ -106,8 +122,15 @@ public class Hologram : MonoBehaviour
                 var position = hologramReferenzPosition.position;
                 hologramCopyForTables.transform.position = new Vector3(position.x, position.y + hightOfObject, position.z);
                 var eulerAngles = hologramReferenzPosition.transform.eulerAngles;
+                //Normal if Grabable
+                if (visual.GetComponent(typeof(FunitureGrabable)) != null)
+                {
+                    hologramCopy.transform.eulerAngles =
+                        new Vector3(eulerAngles.x, xr.transform.eulerAngles.y, eulerAngles.z);
+                }
                 //90 different for the Transform
-                hologramCopyForTables.transform.eulerAngles =
+                else
+                    hologramCopyForTables.transform.eulerAngles =
                     new Vector3(eulerAngles.x, xr.transform.eulerAngles.y + 90, eulerAngles.z);
             }
         }
@@ -117,8 +140,11 @@ public class Hologram : MonoBehaviour
     public void CreateHologramForTables()
     {
         hologramCopyForTables = Instantiate(hologramCopy);
-        foreach (var renderer in hologramCopyForTables.GetComponentsInChildren<Renderer>(true))
-            renderer.sharedMaterial = ghostMaterial;
+        hologramCopyForTables.GetComponent<HologramSpawnPoint>().SetToOnTable();
+        hologramCopyForTables.GetComponent<HologramSpawnPoint>().insideFuniture = false;
+        AddListeners(hologramCopyForTables);
+        
+       PlacementOpen(hologramCopyForTables);
     }
 
     public void DestroyHologramForTables()
@@ -128,7 +154,7 @@ public class Hologram : MonoBehaviour
             Destroy(hologramCopyForTables);
         }
 
-        placementOpen();
+        PlacementOpen(hologramCopy);
     }
 
 
@@ -146,6 +172,8 @@ public class Hologram : MonoBehaviour
                     else
                     {
                         if (hologramCopyForTables == null) return;
+
+                        if (hologramCopyForTables.GetComponent<HologramSpawnPoint>().insideFuniture) return;
                         var position = visualCreationPoint.position;
                         Instantiate(visual,
                             new Vector3(position.x, position.y + hightOfObject,
@@ -162,6 +190,11 @@ public class Hologram : MonoBehaviour
             {
                 Destroy(hologramCopy);
                 hologramCopy = new GameObject();
+            }
+            
+            if (hologramCopyForTables != null)
+            {
+                Destroy(hologramCopyForTables);
             }
 
             Transform hologramDummy;
@@ -206,27 +239,50 @@ public class Hologram : MonoBehaviour
                 }
                 AddListeners(hologramCopy);
             }
+            
+            
         }
 
-        private void placementBlocked()
+        private void EnteredNormal()
+        {
+            PlacementBlocked(hologramCopy);
+        }
+
+        private void EnteredTable()
+        {
+            PlacementBlocked(hologramCopyForTables);
+        }
+        
+        private void ExitNormal()
+        {
+            PlacementOpen(hologramCopy);
+        }
+
+        private void ExitTable()
+        {
+            PlacementOpen(hologramCopyForTables);
+        }
+        
+
+        private void PlacementBlocked(GameObject objectItem)
         {
             Debug.Log("Blocked Color for Copy");
-            foreach (var renderer in hologramCopy.GetComponentsInChildren<Renderer>(true))
+            foreach (var renderer in objectItem.GetComponentsInChildren<Renderer>(true))
                 renderer.sharedMaterial = blockedMaterial;
 
             blocked = true;
         }
 
-        private void placementOpen()
+        private void PlacementOpen(GameObject objectItem)
         {
             Debug.Log("Ghost Color for Copy");
-            foreach (var renderer in hologramCopy.GetComponentsInChildren<Renderer>(true))
+            foreach (var renderer in objectItem.GetComponentsInChildren<Renderer>(true))
                 renderer.sharedMaterial = ghostMaterial;
 
             blocked = false;
         }
 
-        private void disableHologram()
+        private void DisableHologram()
         {
             Debug.Log("Disabled Hologram");
             if (buildingCharakter.activeMode != SC_For_Mode.Mode.buildingMode &&
@@ -239,4 +295,5 @@ public class Hologram : MonoBehaviour
                 hologramCopy.gameObject.SetActive(true);
             }
         }
-    }
+        
+}

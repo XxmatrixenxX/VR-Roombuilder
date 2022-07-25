@@ -9,7 +9,7 @@ public class FunitureGrabable : Funiture
 
      public override void StartOptions()
     {
-        buildingCharakter =  buildingCharakter = FindObjectOfType<BuildingCharakter>();
+        buildingCharakter = FindObjectOfType<BuildingCharakter>();
         ChangeTagOfChild();
     }
 
@@ -17,6 +17,8 @@ public class FunitureGrabable : Funiture
      {
          return buildingCharakter.activeMode == modeWhereCanGrab;
      }
+     
+     
      
     
 }
