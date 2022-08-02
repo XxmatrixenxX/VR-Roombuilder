@@ -192,6 +192,7 @@ MonoBehaviour:
   uiScaleCanvas: {fileID: 5402083351585365426}
   uiTextureCanvas: {fileID: 4802049657838730332}
   buildingCharakter: {fileID: 0}
+  inputManager: {fileID: 0}
   funitureString: FuniturePlacementArea
   funitureCollider: {fileID: 0}
   placeArea: {fileID: 875031652011575834}
@@ -900,6 +901,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1283816819452414806}
     m_Modifications:
+    - target: {fileID: 308079648124882805, guid: 2b83fadf759a9e14d8a04eb56ac018c5,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1572782978156643253, guid: 2b83fadf759a9e14d8a04eb56ac018c5,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5171593967954915506, guid: 2b83fadf759a9e14d8a04eb56ac018c5,
         type: 3}
       propertyPath: m_RootOrder

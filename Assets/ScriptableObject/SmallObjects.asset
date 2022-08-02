@@ -14,4 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   menuItemList:
   - {fileID: 11400000, guid: 678ed7fa81bdb4649af05cb1cfad434a, type: 2}
+  - {fileID: 11400000, guid: ed0adcdddcc5c724d899733f4b7a45dc, type: 2}
+  - {fileID: 11400000, guid: 34ccb4fe72db54346b86c029ac31a830, type: 2}
+  - {fileID: 11400000, guid: f6f4a963932c7574697a2967358427d7, type: 2}
+  - {fileID: 11400000, guid: 62aa57f7aab77554aaf281d5fc38dcf3, type: 2}
+  - {fileID: 11400000, guid: 235af42c85521384d8a1d046aea1ce43, type: 2}
+  - {fileID: 11400000, guid: 324fcf25c02028f4c8da69f3f3cc7be1, type: 2}
+  - {fileID: 11400000, guid: 17a480f093bbb3646bd7bf0b91abc2f7, type: 2}
   ListTypeName: SmallObjects

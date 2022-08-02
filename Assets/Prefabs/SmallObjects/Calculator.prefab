@@ -91,6 +91,7 @@ MonoBehaviour:
   uiScaleCanvas: {fileID: 0}
   uiTextureCanvas: {fileID: 0}
   buildingCharakter: {fileID: 0}
+  inputManager: {fileID: 0}
   funitureString: Funiture
   funitureCollider: {fileID: 0}
   modeWhereCanGrab: 3
@@ -262,14 +263,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5881799529508614173}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3875264633016539130}
   m_Father: {fileID: 1311372403080236614}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &3879755955375186848
 PrefabInstance:
   m_ObjectHideFlags: 0

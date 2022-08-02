@@ -34,7 +34,7 @@ public class Funiture : MonoBehaviour
 
     public GameObject funiture;
 
-    [SerializeField] private GameObject objectHolder;
+    public GameObject objectHolder;
 
     [SerializeField] private List<Material> designs;
 
@@ -47,6 +47,8 @@ public class Funiture : MonoBehaviour
     [SerializeField] private GameObject uiTextureCanvas;
 
     public BuildingCharakter buildingCharakter;
+    
+    public VrInputManager inputManager;
 
     [SerializeField] private String funitureString = "Funiture";
     
@@ -67,6 +69,7 @@ public class Funiture : MonoBehaviour
     {
         funitureCollider = funiture.gameObject.GetComponent<Collider>();
         SliderStartPosition();
+        inputManager = FindObjectOfType<VrInputManager>();
         buildingCharakter = FindObjectOfType<BuildingCharakter>();
         buildingCharakter.SelectedNewItem += SelectedNewItem;
         ChangeTagOfChild();

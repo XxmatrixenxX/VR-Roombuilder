@@ -16,5 +16,6 @@ public class SC_For_Mode : ScriptableObject
         chooseBuildingMode,
         topBuildingMode,
         playerMode,
+        wallBuildingMode
     }
 }

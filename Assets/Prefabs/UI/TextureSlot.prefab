@@ -163,7 +163,7 @@ GameObject:
   - component: {fileID: 6982977667900974526}
   - component: {fileID: 3772356338415536938}
   m_Layer: 5
-  m_Name: Texture
+  m_Name: TextureSlot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

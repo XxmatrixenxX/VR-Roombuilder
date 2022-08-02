@@ -34,10 +34,23 @@ public class BuildingCharakter : MonoBehaviour
          case SC_For_Mode.Mode.topBuildingMode:
             ChangeToTopMode();
             break;
+         case SC_For_Mode.Mode.wallBuildingMode:
+            ChangeToWallbuildingMode();
+            break;
       }
       InvokeModeChanged();
    }
-   
+
+   private void ChangeToWallbuildingMode()
+   {
+      if (activeMode.Equals( SC_For_Mode.Mode.chooseBuildingMode))
+      {
+         DisableBuildingSelect();
+      }
+
+      activeMode = SC_For_Mode.Mode.wallBuildingMode;
+   }
+
    public void ChangeToBuildingMode()
    {
       if (activeMode.Equals( SC_For_Mode.Mode.chooseBuildingMode))

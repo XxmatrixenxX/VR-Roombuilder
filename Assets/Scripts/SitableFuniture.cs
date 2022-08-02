@@ -15,10 +15,13 @@ public class SitableFuniture : Funiture
 
     [SerializeField] private bool sitting = false;
 
+    private float hightBeforeSitting;
     public override void StartOptions()
     {
         base.StartOptions();
         playerOrigin = FindObjectOfType<XROrigin>();
+        inputManager.RightControllerSecondary += ExitSitting;
+        inputManager.LeftControllerSecondary += ExitSitting;
     }
 
     private void Update()
@@ -29,8 +32,12 @@ public class SitableFuniture : Funiture
 
     public void SittingOnChair()
     {
-        if(buildingCharakter.activeMode == SC_For_Mode.Mode.playerMode)
+        if (buildingCharakter.activeMode == SC_For_Mode.Mode.playerMode)
+        {
+            hightBeforeSitting = playerOrigin.transform.position.y;
             sitting = true;
+        }
+            
     }
     public void SitDown()
     {
@@ -43,7 +50,9 @@ public class SitableFuniture : Funiture
 
     public void ExitSitting()
     {
+        if (!sitting) return;
         sitting = false;
-        playerOrigin.transform.position = exitPosition.transform.position;
+        var position = exitPosition.transform.position;
+        playerOrigin.transform.position = new Vector3(position.x, hightBeforeSitting, position.z);
     }
 }
