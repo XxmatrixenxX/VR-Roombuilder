@@ -1229,7 +1229,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3309568911472692850}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 1.392, y: 1.26, z: -0.515}
+  m_LocalPosition: {x: 1.392, y: 1.597, z: -0.282}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 6337775969294231228}
@@ -2430,6 +2430,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6695380033975904393}
   - component: {fileID: 3121958554856881253}
+  - component: {fileID: 394163065655993830}
   m_Layer: 0
   m_Name: WallPlace
   m_TagString: Untagged
@@ -2484,6 +2485,20 @@ MonoBehaviour:
   canvasItem: {fileID: 1575331346702426046}
   wallTypes: {fileID: 11400000, guid: 6cc74c3077007884db65d7f96deb2f14, type: 2}
   ui: {fileID: 3309568911472692850}
+--- !u!114 &394163065655993830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8175091276051220346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 549e97481e0b49dea012a3a77ef173ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wallpart: {fileID: 3121958554856881253}
+  wallBuilded: 3
 --- !u!1 &8520422725821221415
 GameObject:
   m_ObjectHideFlags: 0

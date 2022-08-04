@@ -20,7 +20,7 @@ public class WallScript : MonoBehaviour
     [SerializeField] private GameObject placed;
     [SerializeField] private GameObject objectHolder;
 
-    [SerializeField] private State state = State.Preview;
+    [SerializeField] public State state = State.Preview;
     public BuildingCharakter buildingCharakter;
 
     //UI Items
@@ -32,6 +32,9 @@ public class WallScript : MonoBehaviour
     [SerializeField] private GameObject canvasItem;
     [SerializeField] private SCList_TypeList wallTypes;
     [SerializeField] private GameObject ui;
+    
+    public event Action StateChanged;
+    public void InvokeStateChanged() => StateChanged?.Invoke();
     
 
     private void Start()
@@ -46,7 +49,7 @@ public class WallScript : MonoBehaviour
         ui.SetActive(false);
     }
 
-    private enum State
+    public enum State
     {
         NotVisible,
         Preview,
@@ -140,6 +143,8 @@ public class WallScript : MonoBehaviour
                 state = State.PlacedDoor;
                 break;
         }
+
+        InvokeStateChanged();
         placed.transform.parent = objectHolder.transform;
         placed.AddComponent<XRSimpleInteractable>().activated.AddListener(delegate { ToggleUI(true); });
     }
@@ -152,6 +157,7 @@ public class WallScript : MonoBehaviour
             Destroy(preview);
 
         state = State.NotVisible;
+        InvokeStateChanged();
     }
 
     public void DestroyWall()
@@ -160,6 +166,7 @@ public class WallScript : MonoBehaviour
         Destroy(preview);
 
         state = State.NotVisible;
+        InvokeStateChanged();
     }
     
     // UI Part
