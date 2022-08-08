@@ -47,8 +47,8 @@ public class BuildingCharakter : MonoBehaviour
       {
          DisableBuildingSelect();
       }
-
       activeMode = SC_For_Mode.Mode.wallBuildingMode;
+      wristMenu.ActivateBottomRoof();
    }
 
    public void ChangeToBuildingMode()

@@ -10,7 +10,8 @@ public class WristMenuHandler : MonoBehaviour
     [SerializeField] private UIModeChoose ModeSelectCanvas;
     [SerializeField] private GameObject UIOpener;
     [SerializeField] private GameObject UIWindow;
-    
+    [SerializeField] private GameObject BottomRoofWindow;
+
 
     private void Awake()
     {
@@ -21,6 +22,7 @@ public class WristMenuHandler : MonoBehaviour
     {
         ItemSelectCanvas.gameObject.SetActive(false);
         ModeSelectCanvas.gameObject.SetActive(true);
+        BottomRoofWindow.SetActive(false);
     }
 
     public void ActivateItemSelectCanvas()
@@ -28,6 +30,12 @@ public class WristMenuHandler : MonoBehaviour
         ItemSelectCanvas.gameObject.SetActive(true);
         ItemSelectCanvas.LoadingCanvas();
         ModeSelectCanvas.gameObject.SetActive(false);
+        BottomRoofWindow.SetActive(false);
+    }
+    public void ActivateBottomRoof()
+    {
+        ModeSelectCanvas.gameObject.SetActive(false);
+        BottomRoofWindow.SetActive(true);
     }
 
     public void CloseMenus()
