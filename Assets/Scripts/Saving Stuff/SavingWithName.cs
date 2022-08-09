@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SavingWithName : MonoBehaviour
 {
@@ -10,11 +11,12 @@ public class SavingWithName : MonoBehaviour
     public GameObject nameCanvas;
     public GameObject allreadyTakenCanvas;
     public GameObject objectToSave;
+    public Text nameText;
     private PrefabSaver prefabSaver;
 
     void Start()
     {
-        prefabSaver = GetComponent<PrefabSaver>();
+        prefabSaver = FindObjectOfType<PrefabSaver>();
 
     }
     public void ActivateNameCanvas()
@@ -29,9 +31,9 @@ public class SavingWithName : MonoBehaviour
         allreadyTakenCanvas.SetActive(true);
     }
 
-    public void SetName(string name)
+    public void SetTextToName()
     {
-        this.name = name;
+        this.name = nameText.text;
     }
 
 
@@ -42,6 +44,7 @@ public class SavingWithName : MonoBehaviour
         //if name is open it will go trough
         if (prefabSaver.SaveAsPrefabWithName(objectToSave, name, false))
         {
+            FindObjectOfType<WristMenuHandler>().ActivateModeSelect();
             return;
         }
         ActivateAllreadyTakenCanvas();

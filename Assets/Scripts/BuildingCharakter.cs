@@ -37,6 +37,9 @@ public class BuildingCharakter : MonoBehaviour
          case SC_For_Mode.Mode.wallBuildingMode:
             ChangeToWallbuildingMode();
             break;
+         case SC_For_Mode.Mode.savingMode:
+            ChangeToWallbuildingMode();
+            break;
       }
       InvokeModeChanged();
    }
@@ -49,6 +52,16 @@ public class BuildingCharakter : MonoBehaviour
       }
       activeMode = SC_For_Mode.Mode.wallBuildingMode;
       wristMenu.ActivateBottomRoof();
+   }
+   
+   private void ChangeToSavingMode()
+   {
+      if (activeMode.Equals( SC_For_Mode.Mode.chooseBuildingMode))
+      {
+         DisableBuildingSelect();
+      }
+      activeMode = SC_For_Mode.Mode.playerMode;
+      wristMenu.ActivateSaveRoom();
    }
 
    public void ChangeToBuildingMode()
