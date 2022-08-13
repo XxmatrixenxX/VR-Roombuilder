@@ -23,6 +23,8 @@ public class WristMenuHandler : MonoBehaviour
     {
         ItemSelectCanvas.gameObject.SetActive(false);
         ModeSelectCanvas.gameObject.SetActive(true);
+        BottomRoofWindow.SetActive(false);
+        SaveRoomWindow.SetActive(false);
        
     }
 

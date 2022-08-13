@@ -20,7 +20,6 @@ public class PrefabSaver : MonoBehaviour
             {
                 return false;
             }
-            
         }
         
         SaveAsPrefab(gameObjectToPrefab, name, replace);
@@ -29,7 +28,7 @@ public class PrefabSaver : MonoBehaviour
 
     private bool LookForName(string name)
     {
-        string localPath = "Assets/Prefabs/SavedPrefabs" + name + ".prefab";
+        string localPath = "Assets/Prefabs/SavedPrefabs/" + name + ".prefab";
         
         return AssetDatabase.IsValidFolder(localPath);
     }
@@ -37,7 +36,7 @@ public class PrefabSaver : MonoBehaviour
     //creates Prefab with the name
     public void SaveAsPrefab(GameObject gameObjectToPrefab, string name, bool replace)
     {
-        string localPath = "Assets/Prefabs/SavedPrefabs" + name + ".prefab";
+        string localPath = "Assets/Prefabs/SavedPrefabs/" + name + ".prefab";
         
         if(!replace)
             localPath = AssetDatabase.GenerateUniqueAssetPath(localPath);

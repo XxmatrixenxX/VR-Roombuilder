@@ -11,7 +11,10 @@ public class RoomScript : MonoBehaviour
 
     public List<GameObject> itemList;
 
+    public GameObject itemHolder;
+
     public GameObject bottom;
+    public GameObject roof;
     
     // Start is called before the first frame update
     void Start()
@@ -53,19 +56,15 @@ public class RoomScript : MonoBehaviour
             //up
             case 1:
                 return GetDirection(WallRow.Direction.North);
-                break;
             //right
             case 2:
                 return GetDirection(WallRow.Direction.East);
-                break;
             //down
             case 3:
                 return GetDirection(WallRow.Direction.South);
-                break;
             //left
             case 4:
                 return GetDirection(WallRow.Direction.West);
-                break;
         }
 
         return null;
@@ -101,7 +100,8 @@ public class RoomScript : MonoBehaviour
     /// </summary>
     public void RemoveItemFromList(GameObject item)
     {
-        itemList.Remove(item);
+        if(itemList.Contains(item))
+            itemList.Remove(item);
     }
 
     public void ChangeBottomDesign(Material material)
@@ -109,5 +109,11 @@ public class RoomScript : MonoBehaviour
         Renderer render = bottom.transform.GetComponent<Renderer>();
 
         render.sharedMaterial = material;
+    }
+
+    public void SetItemHolderAsParent(GameObject item)
+    {
+        AddItemToList(item);
+        item.transform.SetParent(itemHolder.transform);
     }
 }

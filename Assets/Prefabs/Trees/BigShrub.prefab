@@ -992,7 +992,7 @@ MonoBehaviour:
   size: 1
   sizeText: {fileID: 1248221369589323123}
   uiObject: {fileID: 4987714644146184504}
-  funiture: {fileID: 0}
+  funiture: {fileID: 2130467960607498453}
   objectHolder: {fileID: 6939211935798051113}
   designs: []
   sizeSlider: {fileID: 2920909669366850973}
@@ -1002,6 +1002,7 @@ MonoBehaviour:
   uiScaleCanvas: {fileID: 2488519111598035283}
   uiTextureCanvas: {fileID: 2477486498993923551}
   buildingCharakter: {fileID: 0}
+  inputManager: {fileID: 0}
   funitureString: Funiture
   funitureCollider: {fileID: 0}
 --- !u!114 &3876051558078540929
@@ -3527,6 +3528,12 @@ PrefabInstance:
 --- !u!4 &1646947463940815471 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 409024204744052258, guid: 6bbaea1be78b8d02d852cd83ce21cd94,
+    type: 3}
+  m_PrefabInstance: {fileID: 1402313448399991885}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2130467960607498453 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1073815990686323864, guid: 6bbaea1be78b8d02d852cd83ce21cd94,
     type: 3}
   m_PrefabInstance: {fileID: 1402313448399991885}
   m_PrefabAsset: {fileID: 0}

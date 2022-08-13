@@ -79,6 +79,7 @@ public class Funiture : MonoBehaviour
     public void DestroyThisFuniture()
     {
         Debug.Log("Destroy Funiture");
+        this.transform.parent.parent.GetComponent<RoomScript>().RemoveItemFromList(this.gameObject);
         Destroy(gameObject);
     }
 

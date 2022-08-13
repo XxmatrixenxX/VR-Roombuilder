@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class SavingWithName : MonoBehaviour
 {
+    //Todo Add Roomfunction
+    
     public string name;
 
     public GameObject nameCanvas;

@@ -9,6 +9,7 @@ TagManager:
   - FuniturePlacementArea
   - GrabableFuniture
   - SitableFuniture
+  - Room
   layers:
   - Default
   - TransparentFX
@@ -17,8 +18,8 @@ TagManager:
   - Water
   - UI
   - Grab
-  - 
-  - 
+  - LayerRoom
+  - LayerFunitureAndWalls
   - 
   - 
   - 

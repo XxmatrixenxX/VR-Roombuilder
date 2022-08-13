@@ -8,6 +8,10 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class Hologram : MonoBehaviour
 {
+    //Todo Add Roomfunction
+
+    public RoomScript room;
+    
     [SerializeField] private GameObject visual;
     [SerializeField] private GameObject hologramCopy;
     [SerializeField] private GameObject hologramCopyForTables;
@@ -156,12 +160,16 @@ public class Hologram : MonoBehaviour
 
     private void CreateObject()
     {
+        GameObject createdObject;
         Debug.Log("Create Object");
         if (buildingCharakter.activeMode == SC_For_Mode.Mode.buildingMode ||
             buildingCharakter.activeMode == SC_For_Mode.Mode.chooseBuildingMode)
             if (!blocked)
             {
-                Instantiate(visual, visualCreationPoint.position, hologramCopy.transform.rotation);
+              createdObject = Instantiate(visual, visualCreationPoint.position, hologramCopy.transform.rotation);
+              createdObject.layer = 8;
+              if(room != null)
+                room.SetItemHolderAsParent(createdObject);
             }
             else
             {
@@ -169,9 +177,12 @@ public class Hologram : MonoBehaviour
 
                 if (hologramCopyForTables.GetComponent<HologramSpawnPoint>().insideFuniture) return;
                 var position = visualCreationPoint.position;
-                Instantiate(visual,
+                createdObject = Instantiate(visual,
                     new Vector3(position.x, position.y + hightOfObject,
                         position.z), hologramCopyForTables.transform.rotation);
+                createdObject.layer = 8;
+                if(room != null)
+                    room.SetItemHolderAsParent(createdObject);
             }
     }
 

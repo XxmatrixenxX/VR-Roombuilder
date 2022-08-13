@@ -2,9 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BottomRoofHandler : MonoBehaviour
 {
+    //Todo Add Roomfunction
+    
     public GameObject roof;
     public GameObject bottom;
 
@@ -38,9 +41,20 @@ public class BottomRoofHandler : MonoBehaviour
         LoadingTexturesBottomRoof(2);
     }
 
-    public void ToggleRoof(bool value)
+    public void CloseCanvas()
     {
-        roof.gameObject.SetActive(value);
+        roofCanvas.SetActive(false);
+        bottomCanvas.SetActive(false);
+    }
+
+    public void ToggleRoof(Toggle value)
+    {
+        if(value)
+            roof.gameObject.SetActive(true);
+        else
+        {
+            roof.gameObject.SetActive(false); 
+        }
     }
     
     
@@ -93,9 +107,9 @@ public class BottomRoofHandler : MonoBehaviour
         Debug.Log("SwapDesign: " + number);
         if (materialList.Count > number)
         {
-            if (roof.transform.childCount > 0)
+            if (roof.transform.GetComponent<Renderer>())
             {
-                Renderer render = roof.transform.GetChild(0).GetComponent<Renderer>();
+                Renderer render = roof.transform.GetComponent<Renderer>();
 
                 render.sharedMaterial = materialList[number];
             }
@@ -106,9 +120,9 @@ public class BottomRoofHandler : MonoBehaviour
         Debug.Log("SwapDesign: " + number);
         if (materialList.Count > number)
         {
-            if (bottom.transform.childCount > 0)
+            if (bottom.transform.GetComponent<Renderer>())
             {
-                Renderer render = bottom.transform.GetChild(0).GetComponent<Renderer>();
+                Renderer render = bottom.transform.GetComponent<Renderer>();
 
                 render.sharedMaterial = materialList[number];
             }

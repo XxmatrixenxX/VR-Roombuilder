@@ -38,7 +38,7 @@ public class BuildingCharakter : MonoBehaviour
             ChangeToWallbuildingMode();
             break;
          case SC_For_Mode.Mode.savingMode:
-            ChangeToWallbuildingMode();
+            ChangeToSavingMode();
             break;
       }
       InvokeModeChanged();

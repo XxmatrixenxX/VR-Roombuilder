@@ -23,9 +23,11 @@ public class WallScript : MonoBehaviour
     [SerializeField] public State state = State.Preview;
     public BuildingCharakter buildingCharakter;
 
+    private Quaternion roomRotation;
+
     //UI Items
-    
-    private List<Material> designs;
+
+    [SerializeField] private List<Material> designs;
     [SerializeField] private UITextureHolder texturePrefab;
     [SerializeField] private UIItemHolder wallItemUi;
     [SerializeField] private GameObject canvasTexture;
@@ -47,6 +49,7 @@ public class WallScript : MonoBehaviour
         AddTypesToCanvas(wallTypes);
         WallModeCheck();
         ui.SetActive(false);
+        roomRotation = this.transform.rotation;
     }
 
     public enum State
@@ -97,9 +100,9 @@ public class WallScript : MonoBehaviour
 
         preview = number switch
         {
-            0 => Instantiate(wall, position, quaternion.identity),
-            1 => Instantiate(wallWindow, position, quaternion.identity),
-            2 => Instantiate(wallDoor, position, quaternion.identity),
+            0 => Instantiate(wall, position, roomRotation),
+            1 => Instantiate(wallWindow, position, roomRotation ),
+            2 => Instantiate(wallDoor, position, roomRotation),
             _ => preview
         };
         GhostTexture(preview);
@@ -131,15 +134,15 @@ public class WallScript : MonoBehaviour
         switch (number)
         {
             case 0:
-                placed = Instantiate(wall, position, quaternion.identity);
+                placed = Instantiate(wall, position, roomRotation);
                 state = State.PlacedWall;
                 break;
             case 1:
-                placed = Instantiate(wallWindow, position, quaternion.identity);
+                placed = Instantiate(wallWindow, position, roomRotation);
                 state = State.PlacedWindow;
                 break;
             case 2:
-                placed = Instantiate(wallDoor, position, quaternion.identity);
+                placed = Instantiate(wallDoor, position, roomRotation);
                 state = State.PlacedDoor;
                 break;
         }
@@ -247,7 +250,10 @@ public class WallScript : MonoBehaviour
         {
             if (objectHolder.transform.childCount > 0)
             {
-                Renderer render = objectHolder.transform.GetChild(0).GetComponent<Renderer>();
+               
+                if( objectHolder.transform.GetChild(0).GetChild(0).GetComponent<Renderer>() == null)
+                    return;
+                Renderer render = objectHolder.transform.GetChild(0).GetChild(0).GetComponent<Renderer>();
 
                 render.sharedMaterial = designs[number];
             }

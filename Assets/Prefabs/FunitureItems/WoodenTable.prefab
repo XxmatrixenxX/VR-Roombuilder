@@ -338,7 +338,7 @@ GameObject:
   - component: {fileID: 4107504241850229808}
   m_Layer: 0
   m_Name: WoodenTable
-  m_TagString: Funiture
+  m_TagString: FuniturePlacementArea
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -407,7 +407,7 @@ MonoBehaviour:
   m_Activated:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 4107504241850229808}
         m_TargetAssemblyTypeName: Funiture, Assembly-CSharp
         m_MethodName: SelectedThisItemForSettings
         m_Mode: 2
@@ -476,6 +476,7 @@ MonoBehaviour:
   uiScaleCanvas: {fileID: 1185101991991272793}
   uiTextureCanvas: {fileID: 6188805719854691790}
   buildingCharakter: {fileID: 0}
+  inputManager: {fileID: 0}
   funitureString: FuniturePlacementArea
   funitureCollider: {fileID: 0}
   placeArea: {fileID: 158359106089691910}
@@ -3614,6 +3615,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: hightForObjectsOnTop
       objectReference: {fileID: 0}
+    - target: {fileID: 7693189850317737841, guid: 2b83fadf759a9e14d8a04eb56ac018c5,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b83fadf759a9e14d8a04eb56ac018c5, type: 3}
 --- !u!4 &158359106089691910 stripped
@@ -3635,7 +3641,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 160806, guid: 6133f78a975db0f4dacf43dbec077916, type: 3}
       propertyPath: m_TagString
-      value: Funiture
+      value: FuniturePlacementArea
       objectReference: {fileID: 0}
     - target: {fileID: 439612, guid: 6133f78a975db0f4dacf43dbec077916, type: 3}
       propertyPath: m_RootOrder

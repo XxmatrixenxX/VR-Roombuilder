@@ -155,7 +155,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7388567980044829226}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Funiture, Assembly-CSharp
         m_MethodName: SliderSize
         m_Mode: 2
@@ -1200,6 +1200,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2366826124916261333}
+  - {fileID: 7140357403833807288}
   m_Father: {fileID: 6629779584287944950}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1324,7 +1325,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7388567980044829226}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Funiture, Assembly-CSharp
         m_MethodName: Accepted
         m_Mode: 1
@@ -1769,11 +1770,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1126321937493697259}
-  - component: {fileID: 7388567980044829226}
   - component: {fileID: 6265168355728540336}
+  - component: {fileID: 2174866291231717368}
   m_Layer: 0
   m_Name: WoodChair
-  m_TagString: Funiture
+  m_TagString: SitableFuniture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1794,35 +1795,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7388567980044829226
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4777125887682213689}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4940478ebc7683748a3fe6a6303c5f20, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  directionRange: 0
-  rotationText: {fileID: 4099218435215632725}
-  size: 1
-  sizeText: {fileID: 3777900675128183885}
-  uiObject: {fileID: 7583914249277091783}
-  funiture: {fileID: 1850326793775402705}
-  objectHolder: {fileID: 2275165144531865261}
-  designs: []
-  sizeSlider: {fileID: 4278171846333338333}
-  rotationSlider: {fileID: 8222459803254197859}
-  texturePrefab: {fileID: 3772356338415536938, guid: b278c86e9b628a94db64c4ef68677df1,
-    type: 3}
-  uiScaleCanvas: {fileID: 112841275300564630}
-  uiTextureCanvas: {fileID: 706119688757030776}
-  buildingCharakter: {fileID: 0}
-  funitureString: Funiture
-  funitureCollider: {fileID: 0}
 --- !u!114 &6265168355728540336
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1871,13 +1843,25 @@ MonoBehaviour:
   m_Activated:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7388567980044829226}
+      - m_Target: {fileID: 2174866291231717368}
         m_TargetAssemblyTypeName: Funiture, Assembly-CSharp
         m_MethodName: SelectedThisItemForSettings
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 4777125887682213689}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2174866291231717368}
+        m_TargetAssemblyTypeName: SitableFuniture, Assembly-CSharp
+        m_MethodName: SittingOnChair
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1913,6 +1897,40 @@ MonoBehaviour:
   m_OnDeactivate:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2174866291231717368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4777125887682213689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90ea3f667cf144d3803bca4aec4d9358, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  directionRange: 0
+  rotationText: {fileID: 4099218435215632725}
+  size: 1
+  sizeText: {fileID: 3777900675128183885}
+  uiObject: {fileID: 7583914249277091783}
+  funiture: {fileID: 1850326793775402705}
+  objectHolder: {fileID: 2275165144531865261}
+  designs: []
+  sizeSlider: {fileID: 4278171846333338333}
+  rotationSlider: {fileID: 8222459803254197859}
+  texturePrefab: {fileID: 3772356338415536938, guid: b278c86e9b628a94db64c4ef68677df1,
+    type: 3}
+  uiScaleCanvas: {fileID: 112841275300564630}
+  uiTextureCanvas: {fileID: 706119688757030776}
+  buildingCharakter: {fileID: 0}
+  inputManager: {fileID: 0}
+  funitureString: Funiture
+  funitureCollider: {fileID: 0}
+  exitPosition: {fileID: 7140357403564551373}
+  enterPosition: {fileID: 7140357403833807288}
+  playerOrigin: {fileID: 0}
+  sitting: 0
 --- !u!1 &4958302700969929238
 GameObject:
   m_ObjectHideFlags: 0
@@ -2070,7 +2088,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7388567980044829226}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Funiture, Assembly-CSharp
         m_MethodName: DestroyThisFuniture
         m_Mode: 1
@@ -2467,7 +2485,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7388567980044829226}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Funiture, Assembly-CSharp
         m_MethodName: SliderRotation
         m_Mode: 2
@@ -3545,6 +3563,87 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!1001 &37133817303731875
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 3428047707126013800}
+    m_Modifications:
+    - target: {fileID: 7175439515242413850, guid: 9aeaa0fc8b4c9834d92e26f58840d73c,
+        type: 3}
+      propertyPath: m_Name
+      value: SittingPoint
+      objectReference: {fileID: 0}
+    - target: {fileID: 7175439515242413851, guid: 9aeaa0fc8b4c9834d92e26f58840d73c,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7175439515242413851, guid: 9aeaa0fc8b4c9834d92e26f58840d73c,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7175439515242413851, guid: 9aeaa0fc8b4c9834d92e26f58840d73c,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.675
+      objectReference: {fileID: 0}
+    - target: {fileID: 7175439515242413851, guid: 9aeaa0fc8b4c9834d92e26f58840d73c,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7175439515242413851, guid: 9aeaa0fc8b4c9834d92e26f58840d73c,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 7175439515242413851, guid: 9aeaa0fc8b4c9834d92e26f58840d73c,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7175439515242413851, guid: 9aeaa0fc8b4c9834d92e26f58840d73c,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 7175439515242413851, guid: 9aeaa0fc8b4c9834d92e26f58840d73c,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7175439515242413851, guid: 9aeaa0fc8b4c9834d92e26f58840d73c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7175439515242413851, guid: 9aeaa0fc8b4c9834d92e26f58840d73c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 7175439515242413851, guid: 9aeaa0fc8b4c9834d92e26f58840d73c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9aeaa0fc8b4c9834d92e26f58840d73c, type: 3}
+--- !u!4 &7140357403564551373 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7175439514435887726, guid: 9aeaa0fc8b4c9834d92e26f58840d73c,
+    type: 3}
+  m_PrefabInstance: {fileID: 37133817303731875}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7140357403833807288 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7175439515242413851, guid: 9aeaa0fc8b4c9834d92e26f58840d73c,
+    type: 3}
+  m_PrefabInstance: {fileID: 37133817303731875}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7886384803733838189
 PrefabInstance:
   m_ObjectHideFlags: 0

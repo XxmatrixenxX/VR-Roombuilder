@@ -33,6 +33,11 @@ public class HologramSpawnPoint : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
+        if (collision.CompareTag("Room"))
+        {
+            return;
+        }
+        
         if (OnTable)
         {
             if (collision.CompareTag("Funiture") || collision.CompareTag("FuniturePlacementArea") || collision.CompareTag("GrabableFuniture") || collision.CompareTag("SitableFuniture"))
@@ -78,6 +83,7 @@ public class HologramSpawnPoint : MonoBehaviour
     
     private void OnTriggerStay(Collider collision)
     {
+
         if (OnTable)
         {
             if (collision.CompareTag("Funiture") || collision.CompareTag("FuniturePlacementArea") ||
@@ -113,6 +119,11 @@ public class HologramSpawnPoint : MonoBehaviour
 
     private void OnTriggerExit(Collider collision)
     {
+        if (collision.CompareTag("Room"))
+        {
+            return;
+        }
+        
         if (OnTable)
         {
             if (collision.CompareTag("Funiture") || collision.CompareTag("FuniturePlacementArea") ||
@@ -158,7 +169,7 @@ public class HologramSpawnPoint : MonoBehaviour
     private void EnteredTableFuniture(Collider collision)
     {
         Debug.Log("Entered Funiture first Time");
-        InvokeHologramEnteredFunitureTable(collision.transform.root.gameObject.GetComponent<FunitureWithPlaceArea>());
+        InvokeHologramEnteredFunitureTable(collision.transform.parent.parent.parent.parent.gameObject.GetComponent<FunitureWithPlaceArea>());
         insideFuniture = true;
     }
     
