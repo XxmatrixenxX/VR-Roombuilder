@@ -41,15 +41,19 @@ public class WallScript : MonoBehaviour
 
     private void Start()
     {
-        buildingCharakter = FindObjectOfType<BuildingCharakter>();
 
-        buildingCharakter.ModeChanged += WallModeCheck;
-     
-        ChangePreview(0);
-        AddTypesToCanvas(wallTypes);
-        WallModeCheck();
-        ui.SetActive(false);
-        roomRotation = this.transform.rotation;
+        if (FindObjectOfType<BuildingCharakter>() != null)
+        {
+            buildingCharakter = FindObjectOfType<BuildingCharakter>();
+
+            buildingCharakter.ModeChanged += WallModeCheck;
+
+            ChangePreview(0);
+            AddTypesToCanvas(wallTypes);
+            WallModeCheck();
+            ui.SetActive(false);
+            roomRotation = this.transform.rotation;
+        }
     }
 
     public enum State

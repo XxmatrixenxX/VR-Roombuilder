@@ -15,6 +15,10 @@ public class RoomScript : MonoBehaviour
 
     public GameObject bottom;
     public GameObject roof;
+
+    public bool roofActivated = false;
+
+    public WallRow.Direction direction;
     
     // Start is called before the first frame update
     void Start()
@@ -27,6 +31,47 @@ public class RoomScript : MonoBehaviour
     {
         
     }
+
+    public void RotateLeftDirection()
+    {
+        switch (direction)
+        {
+            case WallRow.Direction.North:
+                direction = WallRow.Direction.West;
+                break;
+            case WallRow.Direction.East:
+                direction = WallRow.Direction.North;
+                break;
+            case WallRow.Direction.South:
+                direction = WallRow.Direction.East;
+                break;
+            case WallRow.Direction.West:
+                direction = WallRow.Direction.South;
+                break;
+        }
+    }
+   
+    public void RotateRightDirection()
+    {
+        switch (direction)
+        {
+            case WallRow.Direction.North:
+                direction = WallRow.Direction.East;
+                break;
+            case WallRow.Direction.East:
+                direction = WallRow.Direction.South;
+                break;
+            case WallRow.Direction.South:
+                direction = WallRow.Direction.West;
+                break;
+            case WallRow.Direction.West:
+                direction = WallRow.Direction.North;
+                break;
+        }
+    }
+    
+    
+
 
     public void RotateRoomRight()
     {

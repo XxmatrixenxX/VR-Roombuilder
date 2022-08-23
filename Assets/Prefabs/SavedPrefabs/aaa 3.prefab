@@ -45200,7 +45200,7 @@ MonoBehaviour:
   - {fileID: 4161304523138391344}
   - {fileID: 4161304523773969995}
   - {fileID: 4161304523753827284}
-  direction: 1
+  direction: 0
 --- !u!1 &4379668528857717758
 GameObject:
   m_ObjectHideFlags: 0
@@ -45263,6 +45263,8 @@ MonoBehaviour:
   itemHolder: {fileID: 6728762786976457102}
   bottom: {fileID: 4379668530506258664}
   roof: {fileID: 4379668530387443268}
+  roofActivated: 1
+  direction: 0
 --- !u!65 &4379668528857717755
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -45332,7 +45334,7 @@ MonoBehaviour:
   - {fileID: 4161304523002825096}
   - {fileID: 4161304524264057070}
   - {fileID: 4161304523873522993}
-  direction: 3
+  direction: 2
 --- !u!1 &4379668529861815681
 GameObject:
   m_ObjectHideFlags: 0
@@ -45389,7 +45391,7 @@ MonoBehaviour:
   - {fileID: 4161304524898179588}
   - {fileID: 4161304524871563825}
   - {fileID: 4161304524329986761}
-  direction: 2
+  direction: 1
 --- !u!1 &4379668530008768480
 GameObject:
   m_ObjectHideFlags: 0
@@ -45480,7 +45482,7 @@ MonoBehaviour:
   - {fileID: 4161304523264689569}
   - {fileID: 4161304523223483478}
   - {fileID: 4161304523220538139}
-  direction: 0
+  direction: 3
 --- !u!1 &4379668530387443268
 GameObject:
   m_ObjectHideFlags: 0

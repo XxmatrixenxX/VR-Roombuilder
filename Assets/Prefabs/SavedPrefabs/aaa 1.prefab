@@ -101508,7 +101508,7 @@ MonoBehaviour:
   - {fileID: 8575401280528026722}
   - {fileID: 8575401281286237444}
   - {fileID: 8575401279519969499}
-  direction: 3
+  direction: 2
 --- !u!1 &8248812482446450196
 GameObject:
   m_ObjectHideFlags: 0
@@ -101571,6 +101571,8 @@ MonoBehaviour:
   itemHolder: {fileID: 1431934088857232484}
   bottom: {fileID: 8248812482954173698}
   roof: {fileID: 8248812483069975470}
+  roofActivated: 0
+  direction: 0
 --- !u!65 &8248812482446450193
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -101640,7 +101642,7 @@ MonoBehaviour:
   - {fileID: 8575401280395090138}
   - {fileID: 8575401279755699105}
   - {fileID: 8575401279769046590}
-  direction: 1
+  direction: 0
 --- !u!1 &8248812482954173698
 GameObject:
   m_ObjectHideFlags: 0
@@ -101890,7 +101892,7 @@ MonoBehaviour:
   - {fileID: 8575401280269828171}
   - {fileID: 8575401280312476092}
   - {fileID: 8575401280309794545}
-  direction: 0
+  direction: 3
 --- !u!1 &8248812483580787210
 GameObject:
   m_ObjectHideFlags: 0
@@ -101981,7 +101983,7 @@ MonoBehaviour:
   - {fileID: 8575401280645292014}
   - {fileID: 8575401280803127259}
   - {fileID: 8575401281351905059}
-  direction: 2
+  direction: 1
 --- !u!1 &8249022898908074250
 GameObject:
   m_ObjectHideFlags: 0

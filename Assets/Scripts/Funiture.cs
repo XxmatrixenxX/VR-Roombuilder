@@ -58,7 +58,10 @@ public class Funiture : MonoBehaviour
 
     private void Start()
     {
-       StartOptions();
+        if (FindObjectOfType<BuildingCharakter>() != null)
+        {
+            StartOptions(); 
+        }
     }
 
     private void Awake()

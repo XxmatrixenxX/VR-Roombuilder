@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class SavingWithName : MonoBehaviour
@@ -15,10 +17,13 @@ public class SavingWithName : MonoBehaviour
     public GameObject objectToSave;
     public Text nameText;
     private PrefabSaver prefabSaver;
+    public SC_For_RoomList roomList;
+    
 
     void Start()
     {
         prefabSaver = FindObjectOfType<PrefabSaver>();
+        prefabSaver.SavedObject += AddRoomPrefabToScriptableObject;
 
     }
     public void ActivateNameCanvas()
@@ -70,5 +75,19 @@ public class SavingWithName : MonoBehaviour
     public void SetGameObejctToSaveObject(GameObject objectToBe)
     {
         objectToSave = objectToBe;
+    }
+
+    public void AddRoomPrefabToScriptableObject(GameObject roomObject)
+    {
+        SC_For_Menu room = ScriptableObject.CreateInstance<SC_For_Menu>();
+        room.item = roomObject;
+        room.itemName = roomObject.name;
+        
+        AssetDatabase.CreateAsset(room, "Assets/ScriptableObject/RoomFolder/" +room.itemName +".asset");
+        SC_For_Menu roomadd = (SC_For_Menu)AssetDatabase.LoadAssetAtPath("Assets/ScriptableObject/RoomFolder/" +room.itemName +".asset", typeof(SC_For_Menu));
+        //roomList.roomObject.Add(roomadd);
+        SC_For_RoomList roomlist = (SC_For_RoomList)AssetDatabase.LoadAssetAtPath("Assets/ScriptableObject/RoomFolder/RoomList.asset", typeof(SC_For_RoomList));
+        roomlist.roomObject.Add(roomadd);
+        AssetDatabase.SaveAssets();
     }
 }
