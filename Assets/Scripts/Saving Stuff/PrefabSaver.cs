@@ -54,7 +54,7 @@ public class PrefabSaver : MonoBehaviour
         if(!replace)
             localPath = AssetDatabase.GenerateUniqueAssetPath(localPath);
 
-        PrefabUtility.SaveAsPrefabAssetAndConnect(gameObjectToPrefab, localPath, InteractionMode.UserAction);
+        PrefabUtility.SaveAsPrefabAsset(gameObjectToPrefab, localPath);
         PrefabGetting(localPath);
     }
     
@@ -66,7 +66,7 @@ public class PrefabSaver : MonoBehaviour
         if(!replace)
             localPath = AssetDatabase.GenerateUniqueAssetPath(localPath);
 
-        PrefabUtility.SaveAsPrefabAssetAndConnect(gameObjectToPrefab, localPath, InteractionMode.UserAction);
+        PrefabUtility.SaveAsPrefabAsset(gameObjectToPrefab, localPath);
         PrefabGetting(localPath);
     }
 
@@ -89,7 +89,7 @@ public class PrefabSaver : MonoBehaviour
         
         localPath = AssetDatabase.GenerateUniqueAssetPath(localPath);
 
-        PrefabUtility.SaveAsPrefabAssetAndConnect(gameObjectToPrefab, localPath, InteractionMode.UserAction);
+        PrefabUtility.SaveAsPrefabAsset(gameObjectToPrefab, localPath);
         PrefabGetting(localPath);
     }
     

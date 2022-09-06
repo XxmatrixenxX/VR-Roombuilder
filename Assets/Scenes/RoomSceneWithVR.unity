@@ -1747,6 +1747,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1703813583041840049, guid: 7c1195d94ea923a4b90437afb35aa55b,
+        type: 3}
+      propertyPath: roofActivated
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1703813583041840050, guid: 7c1195d94ea923a4b90437afb35aa55b,
         type: 3}
       propertyPath: m_IsTrigger
@@ -1757,9 +1762,24 @@ PrefabInstance:
       propertyPath: m_Name
       value: Room
       objectReference: {fileID: 0}
+    - target: {fileID: 1703813583492023816, guid: 7c1195d94ea923a4b90437afb35aa55b,
+        type: 3}
+      propertyPath: m_ReceiveGI
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1703813583492023816, guid: 7c1195d94ea923a4b90437afb35aa55b,
+        type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1703813583492023821, guid: 7c1195d94ea923a4b90437afb35aa55b,
         type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1703813583492023821, guid: 7c1195d94ea923a4b90437afb35aa55b,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3325231513194194376, guid: 7c1195d94ea923a4b90437afb35aa55b,

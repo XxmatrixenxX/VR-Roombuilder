@@ -8068,7 +8068,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6404429328644017828}
         m_TargetAssemblyTypeName: Funiture, Assembly-CSharp
-        m_MethodName: DestroyThisFuniture
+        m_MethodName: DestroyThisFurniture
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10970,7 +10970,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 3407079193009729110}
         m_TargetAssemblyTypeName: Funiture, Assembly-CSharp
-        m_MethodName: DestroyThisFuniture
+        m_MethodName: DestroyThisFurniture
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -66809,7 +66809,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6434155352848598529}
         m_TargetAssemblyTypeName: Funiture, Assembly-CSharp
-        m_MethodName: DestroyThisFuniture
+        m_MethodName: DestroyThisFurniture
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -94422,7 +94422,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6139337705278469231}
         m_TargetAssemblyTypeName: Funiture, Assembly-CSharp
-        m_MethodName: DestroyThisFuniture
+        m_MethodName: DestroyThisFurniture
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -106828,7 +106828,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2760937940480210973}
         m_TargetAssemblyTypeName: Funiture, Assembly-CSharp
-        m_MethodName: DestroyThisFuniture
+        m_MethodName: DestroyThisFurniture
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

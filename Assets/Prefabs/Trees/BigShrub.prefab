@@ -3131,7 +3131,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1540371268926817655}
         m_TargetAssemblyTypeName: Funiture, Assembly-CSharp
-        m_MethodName: DestroyThisFuniture
+        m_MethodName: DestroyThisFurniture
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -79,14 +79,18 @@ public class Funiture : MonoBehaviour
         Accepted();
     }
 
-    public void DestroyThisFuniture()
+    public void DestroyThisFurniture()
     {
-        Debug.Log("Destroy Funiture");
+        Debug.Log("Destroy Furniture");
         this.transform.parent.parent.GetComponent<RoomScript>().RemoveItemFromList(this.gameObject);
         Destroy(gameObject);
     }
 
-    public void SelectedNewItem(GameObject selectedGameObject)
+    /// <summary>
+    /// If GameObject is this, activate the UI
+    /// If its a other GameObject close the UI
+    /// </summary>
+    private void SelectedNewItem(GameObject selectedGameObject)
     {
         Debug.Log("Selected a new item");
         
@@ -121,9 +125,15 @@ public class Funiture : MonoBehaviour
         funiture.transform.localScale = new Vector3(size, size, size);
     }
 
-    public void SliderStartPosition()
+    /// <summary>
+    /// Sets Start Position of the Sliders
+    /// Activate the Slider Methods
+    /// </summary>
+    /// Todo find a Way to make the same rotation for GrabFurniture
+    private void SliderStartPosition()
     {
-        Debug.Log("SliderStartPosition: Funiture: SliderPosition Size: "+ size + " RotationPosition Rotation" + directionRange);
+        Debug.Log("SliderStartPosition: Furniture: SliderPosition Size: "+ size + " RotationPosition Rotation" + directionRange);
+        // Whole Numbers are better readable then 0.1 to 2 so it needs to be multiplied  
         sizeSlider.value = size * 10;
         if (funiture.transform.eulerAngles.y > 360)
         {
@@ -144,12 +154,15 @@ public class Funiture : MonoBehaviour
         ChangeSizeText();
     }
 
-    public void ChangeSizeText()
+    private void ChangeSizeText()
     {
         Debug.Log("Size Text adjusted");
         sizeText.text = size.ToString(CultureInfo.InvariantCulture);
     }
 
+    /// <summary>
+    /// If the Object is Selected, Invoke Method of building Character
+    /// </summary>
     public void SelectedThisItemForSettings(GameObject gameObject)
     {
         Debug.Log("SelectedThisItemForSettings: Playermode: " +buildingCharakter.activeMode);
@@ -157,6 +170,9 @@ public class Funiture : MonoBehaviour
         buildingCharakter.InvokeSelectedNewItem(gameObject);
     }
 
+    /// <summary>
+    /// Activate UIScalingCanvas
+    /// </summary>
     public void ChangeCanvasToScaling()
     {
         Debug.Log("ChangeCanvasToScaling Canvas");
@@ -164,7 +180,11 @@ public class Funiture : MonoBehaviour
         uiTextureCanvas.SetActive(false);
     }
     
-    public void SwapDesign(int number)
+    /// <summary>
+    /// Gets the Renderer of the Funiture
+    /// Changes the material to the Design of the Number
+    /// </summary>
+    private void SwapDesign(int number)
     {
         Debug.Log("SwapDesign: " + number);
         if (designs.Count > number)
@@ -178,7 +198,14 @@ public class Funiture : MonoBehaviour
         }
     }
 
-    public void LoadingTextures()
+    /// <summary>
+    /// Delete all Example Data out of the Scrollbar
+    /// Then Create a UITextureHolder for each Material
+    /// Fill UITextureHolder with Data
+    /// Add Object to Scrollbar
+    /// Add Method to Button
+    /// </summary>
+    private void LoadingTextures()
     {
         Debug.Log("Loading Textures");
         foreach (Transform exampleDelete in uiTextureCanvas.transform.GetChild(0).GetChild(0))
@@ -210,7 +237,11 @@ public class Funiture : MonoBehaviour
         LoadingTextures();
     }
 
-    public void ChangeRotationText()
+    /// <summary>
+    /// Change the Text of the Rotation
+    /// Value should be between -180 to 180 
+    /// </summary>
+    private void ChangeRotationText()
     {
         rotationText.text = (directionRange -180).ToString(CultureInfo.InvariantCulture);
         Debug.Log("Rotation Text Changed: directionRange: " + directionRange +"/ rotation Text: " + rotationText.text);
@@ -225,6 +256,10 @@ public class Funiture : MonoBehaviour
         Debug.Log("Funiture rotated Quaternion: " + funiture.transform.rotation );  
     }
     
+    /// <summary>
+    /// Get Data of Slider and save it in directionRange
+    /// Calls Methods for Rotation
+    /// </summary>
     public void SliderRotation(Slider rotation)
     {
         Debug.Log("SliderRotation changed RotationValue: " + rotation.value);

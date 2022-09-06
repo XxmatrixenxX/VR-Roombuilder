@@ -50,12 +50,12 @@ public class BottomRoofHandler : MonoBehaviour
 
     public void ToggleRoof(Toggle value)
     {
-        if (value)
+        if (value.isOn)
         {
             roof.gameObject.SetActive(true);
             room.roofActivated = true;
         }
-        if(!value)
+        if(!value.isOn)
         {
             roof.gameObject.SetActive(false); 
             room.roofActivated = false;

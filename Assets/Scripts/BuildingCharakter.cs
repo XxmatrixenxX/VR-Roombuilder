@@ -8,16 +8,23 @@ public class BuildingCharakter : MonoBehaviour
 {
    public event Action ModeChanged;
 
-   public event Action<GameObject> SelectedNewItem;
+   public event Action<GameObject> SelectedNewItem; 
+   public void InvokeSelectedNewItem(GameObject item) => SelectedNewItem?.Invoke(item);
    
    public WristMenuHandler wristMenu;
 
    public SC_For_Mode.Mode activeMode = SC_For_Mode.Mode.playerMode;
 
-   public void InvokeSelectedNewItem(GameObject item) => SelectedNewItem?.Invoke(item);
+  
    
    public void InvokeModeChanged() => ModeChanged?.Invoke();
    
+   
+   /// <summary>
+   /// Changes Mode of Building Character
+   /// Invokes ModeChange Event
+   /// </summary>
+ 
    public void ChangeMode(SC_For_Mode.Mode mode)
    {
       switch (mode)
@@ -44,6 +51,10 @@ public class BuildingCharakter : MonoBehaviour
       InvokeModeChanged();
    }
 
+   /// <summary>
+   /// Opens the UI of BottomRoof
+   /// Disables UI of BuildingSelect
+   /// </summary>
    private void ChangeToWallbuildingMode()
    {
       if (activeMode.Equals( SC_For_Mode.Mode.chooseBuildingMode))
@@ -54,6 +65,10 @@ public class BuildingCharakter : MonoBehaviour
       wristMenu.ActivateBottomRoof();
    }
    
+   
+   /// <summary>
+   /// Opens UI of RoomSaving
+   /// </summary>
    private void ChangeToSavingMode()
    {
       if (activeMode.Equals( SC_For_Mode.Mode.chooseBuildingMode))
@@ -74,6 +89,9 @@ public class BuildingCharakter : MonoBehaviour
       activeMode = SC_For_Mode.Mode.buildingMode;
    }
    
+   /// <summary>
+   /// Changes UI to Choosing
+   /// </summary>
    public void ChangeToChoosingMode()
    {
       activeMode = SC_For_Mode.Mode.chooseBuildingMode;
@@ -110,16 +128,5 @@ public class BuildingCharakter : MonoBehaviour
    {
       wristMenu.CloseMenus();
    }
-
-   private void CameraChangeTopDown()
-   {
-      
-   }
-
-   private void ChangeToOtherVRControll()
-   {
-      
-   }
-   
 
 }
