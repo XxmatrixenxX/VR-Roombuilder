@@ -19,58 +19,6 @@ public class RoomScript : MonoBehaviour
     public bool roofActivated = false;
 
     public WallRow.Direction direction;
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public void RotateLeftDirection()
-    {
-        switch (direction)
-        {
-            case WallRow.Direction.North:
-                direction = WallRow.Direction.West;
-                break;
-            case WallRow.Direction.East:
-                direction = WallRow.Direction.North;
-                break;
-            case WallRow.Direction.South:
-                direction = WallRow.Direction.East;
-                break;
-            case WallRow.Direction.West:
-                direction = WallRow.Direction.South;
-                break;
-        }
-    }
-   
-    public void RotateRightDirection()
-    {
-        switch (direction)
-        {
-            case WallRow.Direction.North:
-                direction = WallRow.Direction.East;
-                break;
-            case WallRow.Direction.East:
-                direction = WallRow.Direction.South;
-                break;
-            case WallRow.Direction.South:
-                direction = WallRow.Direction.West;
-                break;
-            case WallRow.Direction.West:
-                direction = WallRow.Direction.North;
-                break;
-        }
-    }
-    
-    
 
 
     public void RotateRoomRight()

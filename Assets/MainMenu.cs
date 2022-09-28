@@ -145,13 +145,11 @@ public class MainMenu : MonoBehaviour
 
     public void LoadNewRoom()
     {
-        //LoadingScene(newRoomScene);
         SceneManager.LoadScene("Scenes/RoomSceneWithVR");
     }
 
     public void LoadNewWorld()
     {
-        //LoadingScene(newWorldScene);
         SceneManager.LoadScene("Scenes/WorldEditor");
     }
     
@@ -159,7 +157,6 @@ public class MainMenu : MonoBehaviour
     {
         loadingScript.AddRoom(room);
         loadingScript.loadingtype = LoadingScript.LoadingType.Room;
-        //LoadingScene(loadRoomScene);
         SceneManager.LoadScene("Scenes/Room");
     }
     
@@ -167,7 +164,6 @@ public class MainMenu : MonoBehaviour
     {
         loadingScript.AddRoom(world);
         loadingScript.loadingtype = LoadingScript.LoadingType.World;
-        //LoadingScene(loadWorldScene);
         SceneManager.LoadScene("Scenes/World");
     }
     

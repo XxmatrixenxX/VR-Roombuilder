@@ -39,7 +39,8 @@ public class SitableFuniture : Funiture
         }
             
     }
-    public void SitDown()
+
+    private void SitDown()
     {
         if (!sitting) return;
         var transformPlayer = playerOrigin.transform;
@@ -48,7 +49,7 @@ public class SitableFuniture : Funiture
         transformPlayer.rotation = transformEnter.rotation;
     }
 
-    public void ExitSitting()
+    private void ExitSitting()
     {
         if (!sitting) return;
         sitting = false;

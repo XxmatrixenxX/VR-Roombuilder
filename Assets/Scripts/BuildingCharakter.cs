@@ -38,9 +38,6 @@ public class BuildingCharakter : MonoBehaviour
          case SC_For_Mode.Mode.chooseBuildingMode:
             ChangeToChoosingMode();
             break;
-         case SC_For_Mode.Mode.topBuildingMode:
-            ChangeToTopMode();
-            break;
          case SC_For_Mode.Mode.wallBuildingMode:
             ChangeToWallbuildingMode();
             break;
@@ -79,7 +76,7 @@ public class BuildingCharakter : MonoBehaviour
       wristMenu.ActivateSaveRoom();
    }
 
-   public void ChangeToBuildingMode()
+   private void ChangeToBuildingMode()
    {
       if (activeMode.Equals( SC_For_Mode.Mode.chooseBuildingMode))
       {
@@ -92,7 +89,7 @@ public class BuildingCharakter : MonoBehaviour
    /// <summary>
    /// Changes UI to Choosing
    /// </summary>
-   public void ChangeToChoosingMode()
+   private void ChangeToChoosingMode()
    {
       activeMode = SC_For_Mode.Mode.chooseBuildingMode;
 
@@ -100,16 +97,7 @@ public class BuildingCharakter : MonoBehaviour
       wristMenu.ActivateItemSelectCanvas();
    }
    
-   public void ChangeToTopMode()
-   {
-      if (activeMode.Equals( SC_For_Mode.Mode.chooseBuildingMode))
-      {
-         DisableBuildingSelect();
-      }
-      activeMode = SC_For_Mode.Mode.topBuildingMode;
-   }
-   
-   public void ChangeToPlayerMode()
+   private void ChangeToPlayerMode()
    {
       if (activeMode.Equals( SC_For_Mode.Mode.chooseBuildingMode))
       {

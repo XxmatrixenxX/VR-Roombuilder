@@ -3081,7 +3081,7 @@ GameObject:
   - component: {fileID: 99611547933948516}
   m_Layer: 0
   m_Name: RealTable
-  m_TagString: Funiture
+  m_TagString: FuniturePlacementArea
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

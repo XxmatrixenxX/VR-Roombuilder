@@ -6,10 +6,9 @@ using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using Object = UnityEngine.Object;
-
 public class PrefabSaver : MonoBehaviour
 {
-
+#if UnityEditor
     public event Action<GameObject> SavedObject;
     public void SaveObjectInvoke(GameObject prefab) => SavedObject?.Invoke(prefab);
 
@@ -57,7 +56,7 @@ public class PrefabSaver : MonoBehaviour
         PrefabUtility.SaveAsPrefabAsset(gameObjectToPrefab, localPath);
         PrefabGetting(localPath);
     }
-    
+
     //creates Prefab with the GameObject name
     public void SaveAsPrefab(GameObject gameObjectToPrefab, bool replace)
     {
@@ -92,5 +91,5 @@ public class PrefabSaver : MonoBehaviour
         PrefabUtility.SaveAsPrefabAsset(gameObjectToPrefab, localPath);
         PrefabGetting(localPath);
     }
-    
+#endif
 }

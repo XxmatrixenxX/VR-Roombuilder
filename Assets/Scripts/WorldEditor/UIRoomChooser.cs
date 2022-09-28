@@ -164,7 +164,9 @@ public class UIRoomChooser : MonoBehaviour
 
   public void SaveWorld()
   {
+#if UnityEditor
     FindObjectOfType<PrefabSaver>().SaveWorld(worldEditor.gameObject, false);
+#endif
   }
   
   

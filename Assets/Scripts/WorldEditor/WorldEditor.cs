@@ -44,13 +44,13 @@ public class WorldEditor : MonoBehaviour
         {
             AreaBuilding();
         }
-
+#if UnityEditor
         if (FindObjectOfType<PrefabSaver>() != null)
         {
             prefabSaver = FindObjectOfType<PrefabSaver>();
             prefabSaver.SavedObject += AddWorldPrefabToScriptableObject;
         }
-        
+#endif
     }
 
     // Update is called once per frame
@@ -77,12 +77,12 @@ public class WorldEditor : MonoBehaviour
         return rooms;
     }
 
-    public void AreaBuilding()
+    private void AreaBuilding()
     {
-        int locationColumn = 0;
-        int locationRow = 0;
-        int startColumn = 60;
-        int startRow = -60;
+        var locationColumn = 0;
+        var locationRow = 0;
+        var startColumn = 60;
+        var startRow = -60;
 
         locationColumn = startColumn;
         //collumn is width
@@ -139,7 +139,7 @@ public class WorldEditor : MonoBehaviour
     }
 
 
-    public void ColorStartBright(bool bright)
+    private void ColorStartBright(bool bright)
     {
         if (bright)
         {
@@ -149,17 +149,17 @@ public class WorldEditor : MonoBehaviour
             colorStart = FieldColor.Dark;
     }
 
-    public Vector3 createVector3(int length, int width)
+    private Vector3 createVector3(int length, int width)
     {
         return new Vector3(length, 0, width);
     }
 
-    public RoomPlaceHolder createRoomSlot(Vector3 location)
+    private RoomPlaceHolder createRoomSlot(Vector3 location)
     {
         return Instantiate(roomPlaceHolder, location, Quaternion.identity);
     }
 
-    public void ChangeColor()
+    private void ChangeColor()
     {
         if (colorStart == FieldColor.Bright)
         {
@@ -171,13 +171,14 @@ public class WorldEditor : MonoBehaviour
         }
     }
 
-    public void ColorInArea(RoomPlaceHolder roomPlaceHolder)
+    private void ColorInArea(RoomPlaceHolder roomPlaceHolder)
     {
         roomPlaceHolder.ChangeColor(normal);
     }
     
-    public void AddWorldPrefabToScriptableObject(GameObject worldObject)
+    private void AddWorldPrefabToScriptableObject(GameObject worldObject)
     {
+#if UnityEditor
         SC_For_Menu world = ScriptableObject.CreateInstance<SC_For_Menu>();
         world.item = worldObject.gameObject;
         world.itemName = worldObject.name;
@@ -189,5 +190,6 @@ public class WorldEditor : MonoBehaviour
         AssetDatabase.SaveAssets();
         
         //worldList.roomObject.Add(worldadd);
+#endif
     }
 }

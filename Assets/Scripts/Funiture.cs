@@ -250,7 +250,7 @@ public class Funiture : MonoBehaviour
     /// <summary>
     /// Rotate the Object
     /// </summary>
-    public void SetTransformRotation()
+    private void SetTransformRotation()
     {
         funiture.transform.rotation = Quaternion.Euler(0, directionRange, 0);
         Debug.Log("Funiture rotated Quaternion: " + funiture.transform.rotation );  

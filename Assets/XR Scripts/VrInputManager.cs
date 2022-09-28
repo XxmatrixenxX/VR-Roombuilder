@@ -27,12 +27,12 @@ public class VrInputManager : MonoBehaviour
     public event Action LeftControllerSecondary;
     public event Action LeftControllerTrigger;
 
-    public void InvokeRightControllerPrimary() => RightControllerPrimary?.Invoke();
-    public void InvokeRightControllerSecondary() => RightControllerSecondary?.Invoke();
-    public void InvokeRightControllerTrigger() => RightControllerTrigger?.Invoke();
-    public void InvokeLeftControllerPrimary() => LeftControllerPrimary?.Invoke();
-    public void InvokeLeftControllerSecondary() => LeftControllerSecondary?.Invoke();
-    public void InvokeLeftControllerTrigger() => LeftControllerTrigger?.Invoke();
+    private void InvokeRightControllerPrimary() => RightControllerPrimary?.Invoke();
+    private void InvokeRightControllerSecondary() => RightControllerSecondary?.Invoke();
+    private void InvokeRightControllerTrigger() => RightControllerTrigger?.Invoke();
+    private void InvokeLeftControllerPrimary() => LeftControllerPrimary?.Invoke();
+    private void InvokeLeftControllerSecondary() => LeftControllerSecondary?.Invoke();
+    private void InvokeLeftControllerTrigger() => LeftControllerTrigger?.Invoke();
 
 
     private void Start()
@@ -46,6 +46,7 @@ public class VrInputManager : MonoBehaviour
         StartOptions();
     }
 
+    //Checks if Button is pressed for every Screen
     private void Update()
     {
         ButtonChecker(rightController, true);
@@ -71,12 +72,21 @@ public class VrInputManager : MonoBehaviour
             leftController = devices[0];
         }
     }
-
+    
+    /// <summary>
+    /// If a new Device Connect, repeat the StartOptions
+    /// </summary>
+    /// <param name="inputDevice"></param>
     private void InputDeviceConnected(InputDevice inputDevice)
     {
         StartOptions();
     }
 
+    /// <summary>
+    /// Method to Invoke different Button Events
+    /// </summary>
+    /// <param name="device">Controller which is Used</param>
+    /// <param name="right">Bool to decided if its a left or right Controller</param>
     private void ButtonChecker(InputDevice device, bool right)
     {
         if (device.TryGetFeatureValue(CommonUsages.primaryButton, out bool primaryButttonValue) &&

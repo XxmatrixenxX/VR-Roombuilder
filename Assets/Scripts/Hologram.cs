@@ -54,10 +54,16 @@ public class Hologram : MonoBehaviour
 
     private void Update()
     {
-        hologramMover();
+        HologramMover();
         HologramForTablesMover();
     }
 
+    /// <summary>
+    /// Adds Listeners to Object
+    /// If it is onTable it only adds OnTable Events
+    /// Else all Listeners get added
+    /// </summary>
+    /// <param name="hologramSpawnPointObject"></param>
     private void AddListeners(GameObject hologramSpawnPointObject)
     {
         if (hologramSpawnPointObject.GetComponent(typeof(HologramSpawnPoint)) != null)
@@ -72,16 +78,22 @@ public class Hologram : MonoBehaviour
             }
             else
             {
-                //for Basic Funiture
+                //for Basic Furniture
                 spawnpoint.HologramEnteredFuniture += EnteredNormal;
                 spawnpoint.HologramExitFuniture += ExitNormal;
                 //for Tables
-                spawnpoint.HologramEnteredFunitureTable += FunitureWithPlacementArea;
+                spawnpoint.HologramEnteredFunitureTable += FurnitureWithPlacementArea;
                 spawnpoint.HologramExitFunitureTable += DestroyHologramForTables;
             }
         }
     }
 
+    
+    /// <summary>
+    /// Create Transform where the Material is Lightblue transparent
+    /// </summary>
+    /// <param name="aPrefab"> Object that will be copied</param>
+    /// <returns>Created GameObject</returns>
     public Transform CreatePreview(Transform aPrefab)
     {
         Debug.Log("Create Preview");
@@ -97,7 +109,11 @@ public class Hologram : MonoBehaviour
         return obj;
     }
 
-    public void hologramMover()
+    /// <summary>
+    /// If there is a Hologram that can move
+    /// Move it with the XR Character
+    /// </summary>
+    private void HologramMover()
     {
         if (hologramCopy != null)
         {
@@ -110,7 +126,10 @@ public class Hologram : MonoBehaviour
         }
     }
 
-    public void FunitureWithPlacementArea(FunitureWithPlaceArea item)
+    /// <summary>
+    /// Creates Hologram for Table
+    /// </summary>
+    private void FurnitureWithPlacementArea(FunitureWithPlaceArea item)
     {
         hightOfObject = item.gettingHightOfFuniture();
         CreateHologramForTables();
@@ -118,7 +137,7 @@ public class Hologram : MonoBehaviour
     }
 
     //Creates a Visual on Top of the Table
-    public void HologramForTablesMover()
+    private void HologramForTablesMover()
     {
         if (blocked)
         {
@@ -137,7 +156,7 @@ public class Hologram : MonoBehaviour
     }
 
     //Clones HologramCopy for a similar Object 
-    public void CreateHologramForTables()
+    private void CreateHologramForTables()
     {
         hologramCopyForTables = Instantiate(hologramCopy);
         hologramCopyForTables.GetComponent<HologramSpawnPoint>().SetToOnTable();
@@ -147,7 +166,7 @@ public class Hologram : MonoBehaviour
         PlacementOpen(hologramCopyForTables);
     }
 
-    public void DestroyHologramForTables()
+    private void DestroyHologramForTables()
     {
         if (hologramCopyForTables != null)
         {
@@ -157,7 +176,9 @@ public class Hologram : MonoBehaviour
         PlacementOpen(hologramCopy);
     }
 
-
+    /// <summary>
+    /// Creates a new Object on the Point of the Hologram
+    /// </summary>
     private void CreateObject()
     {
         GameObject createdObject;
@@ -171,6 +192,7 @@ public class Hologram : MonoBehaviour
               if(room != null)
                 room.SetItemHolderAsParent(createdObject);
             }
+            // if Hologram is blocked, check for TableHologram
             else
             {
                 if (hologramCopyForTables == null) return;
@@ -186,6 +208,11 @@ public class Hologram : MonoBehaviour
             }
     }
 
+    /// <summary>
+    /// Creates a new Hologram
+    /// Adds RigidBody and Hologramspawnpoint
+    /// </summary>
+    /// <param name="newObjectTransform"></param>
     public void ChangeHologram(GameObject newObjectTransform)
     {
         Debug.Log("ChangeHologram");
@@ -225,7 +252,7 @@ public class Hologram : MonoBehaviour
 
             AddListeners(hologramCopy);
         }
-        else //If the Object does not have a Funiture Object
+        else //If the Object does not have a Furniture Object
         {
             hologramDummy = CreatePreview(visual.transform);
             hologramCopy = hologramDummy.gameObject;
@@ -268,6 +295,10 @@ public class Hologram : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// Changes to BlockedMaterial
+    /// </summary>
+    /// <param name="objectItem"></param>
     private void PlacementBlocked(GameObject objectItem)
     {
         Debug.Log("Blocked Color for Copy");
@@ -277,6 +308,10 @@ public class Hologram : MonoBehaviour
         blocked = true;
     }
 
+    /// <summary>
+    /// Changes to GhostMaterial
+    /// </summary>
+    /// <param name="objectItem"></param>
     private void PlacementOpen(GameObject objectItem)
     {
         Debug.Log("Ghost Color for Copy");
@@ -285,7 +320,7 @@ public class Hologram : MonoBehaviour
 
         blocked = false;
     }
-
+    
     private void DisableHologram()
     {
         Debug.Log("Disabled Hologram");

@@ -64,13 +64,13 @@ public class RoomPlaceHolder : MonoBehaviour
     }
 
     //If room is not null
-    public void DisableBeforeRoom()
+    private void DisableBeforeRoom()
     {
         beforeRoom.SetActive(false);
     }
 
     //If room is null
-    public void EnableBeforeRoom()
+    private void EnableBeforeRoom()
     {
         beforeRoom.SetActive(true);
     }
@@ -96,7 +96,7 @@ public class RoomPlaceHolder : MonoBehaviour
     }
     
 
-    public void AddRoom(GameObject room)
+    private void AddRoom(GameObject room)
     {
         if (!placeAble) return;
         if (worldEditor.ReturnRoomOfList().Count <= 0)
@@ -111,14 +111,14 @@ public class RoomPlaceHolder : MonoBehaviour
         uiRoomChooser.BuildingRooms();
     }
 
-    public void RemoveRoom()
+    private void RemoveRoom()
     {
         Destroy(roomInside.gameObject);
         uiRoomChooser.DestroyRooms();
         EnableBeforeRoom();
     }
 
-    public int ReturnListIndex()
+    private int ReturnListIndex()
     {
         return worldEditor.ReturnPlaceHolderList().IndexOf(this);
     }
@@ -194,7 +194,7 @@ public class RoomPlaceHolder : MonoBehaviour
     /// Needs a Number to Know if its above, beside or underneath
     /// </summary>
     ///  /// <param name="number"> 1 up, 2 right, 3 down, 4 left</param>
-    public bool CheckNeighborWall(RoomPlaceHolder roomPlaceHolder, int number, RoomScript roomThatMaybeBuild)
+    private bool CheckNeighborWall(RoomPlaceHolder roomPlaceHolder, int number, RoomScript roomThatMaybeBuild)
     {
         //ConvertNumber to other sideNumber
         int otherDirection = 1;
@@ -211,7 +211,7 @@ public class RoomPlaceHolder : MonoBehaviour
 
     
     //if the WallTypes are not the Same it returns false
-    public bool CheckWallRow(WallRow firstRow, WallRow secondRow)
+    private bool CheckWallRow(WallRow firstRow, WallRow secondRow)
     {
         int rowCounter = 1;
         foreach (var wall1 in firstRow.wallRow)
@@ -248,7 +248,7 @@ public class RoomPlaceHolder : MonoBehaviour
         }
     }
 
-    public void DarkMaterial(Material material)
+    private void DarkMaterial(Material material)
     {
         colorChange = Mathf.Clamp01(colorChange);
         material.color = new Color(material.color.r * (1 - colorChange),

@@ -26,7 +26,7 @@ public class RoomChecker : MonoBehaviour
         {
             if (roomObject == null)
             {
-                roomObject = collision.gameObject.GetComponent<RoomScript>();;
+                roomObject = collision.gameObject.GetComponent<RoomScript>();
                 InvokeRoomChanged(roomObject);
             }
         }
@@ -39,7 +39,7 @@ public class RoomChecker : MonoBehaviour
         {
             if (roomObject == null)
             {
-                roomObject = collision.gameObject.GetComponent<RoomScript>();;
+                roomObject = collision.gameObject.GetComponent<RoomScript>();
                 InvokeRoomChanged(roomObject);
             }
         }
