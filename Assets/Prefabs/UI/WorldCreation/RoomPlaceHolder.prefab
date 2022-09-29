@@ -92,6 +92,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ownColor: 1
   roomInside: {fileID: 0}
+  spawn: {fileID: 0}
   beforeRoom: {fileID: 8390606675315687624}
   interactCollider: {fileID: 7799418847206198400}
   colorChange: 0.25
@@ -284,6 +285,6 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}

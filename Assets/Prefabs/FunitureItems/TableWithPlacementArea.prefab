@@ -227,7 +227,7 @@ Transform:
   m_Father: {fileID: 4956657176304972239}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &4439495122049569496
+--- !u!1 &5527167727048439181
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -235,7 +235,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6260503939944684}
+  - component: {fileID: 6386644331082079062}
   m_Layer: 8
   m_Name: Table
   m_TagString: Untagged
@@ -243,13 +243,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6260503939944684
+--- !u!4 &6386644331082079062
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4439495122049569496}
+  m_GameObject: {fileID: 5527167727048439181}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -285,7 +285,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 6260503939944684}
+  - {fileID: 6386644331082079062}
   m_Father: {fileID: 1686984826358883282}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -380,7 +380,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 4959510038178464368}
     - target: {fileID: 2109726728343247380, guid: 25e23b6b09c8d694d86314af69e5b4de,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
@@ -560,7 +560,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 4959510038178464368}
     - target: {fileID: 4307191314396399234, guid: 25e23b6b09c8d694d86314af69e5b4de,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
@@ -879,7 +879,7 @@ PrefabInstance:
     - target: {fileID: 6752244319560279696, guid: 25e23b6b09c8d694d86314af69e5b4de,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: DestroyThisFuniture
+      value: DestroyThisFurniture
       objectReference: {fileID: 0}
     - target: {fileID: 6752244319560279696, guid: 25e23b6b09c8d694d86314af69e5b4de,
         type: 3}
@@ -1240,7 +1240,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 6260503939944684}
+    m_TransformParent: {fileID: 6386644331082079062}
     m_Modifications:
     - target: {fileID: 3177594766818935787, guid: 131ba9e827724ae4ea39cba2e1a8ea8d,
         type: 3}

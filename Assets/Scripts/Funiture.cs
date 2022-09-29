@@ -191,7 +191,7 @@ public class Funiture : MonoBehaviour
         {
             if (objectHolder.transform.childCount > 0)
             {
-                Renderer render = objectHolder.transform.GetChild(0).GetComponent<Renderer>();
+                Renderer render = objectHolder.transform.GetChild(0).GetChild(0).GetComponent<Renderer>();
 
                 render.sharedMaterial = designs[number];
             }
